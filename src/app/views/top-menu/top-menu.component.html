@@ -1,0 +1,32 @@
+<nav class="navbar sticky-top  navbar-dark bg-dark">
+  <div class="content">
+    <div>
+    <button class="navbar-toggler"
+            (click)="showSideMenu()"
+            [ngClass]="{'toggled': sideMenuShown}"
+            type="button"
+            aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" routerLink="/"><div class="logo">Logo</div></a>
+    </div>
+    <div class="navbar-expand" id="mainMenu">
+      <ul class="navbar-nav">
+        <li class="nav-item" routerLinkActive="active" style="display: flex;align-items: baseline;">
+          <a class="nav-link" routerLink="/login" (click)="this.loginout()">{{this.isLoggedIn ? 'Выход' : 'Вход'}}{{'(' + currentUser + ')'}}</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/transfer/search" *ngIf="isLoggedIn && hasProfile"><span class="ellipse"></span></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/transfer/search" *ngIf="isLoggedIn && hasProfile"><span class="ellipse"></span></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/transfer/search" *ngIf="isLoggedIn && hasProfile"><span class="ellipse"></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

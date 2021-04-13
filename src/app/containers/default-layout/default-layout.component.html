@@ -1,0 +1,3 @@
+<app-top-menu [sideMenuShown]="sideMenuShown" (IsShownChange)="sideMenuShown = !sideMenuShown"></app-top-menu>
+<app-side-menu [isShown] = sideMenuShown (IsShownChange)="sideMenuShown = !sideMenuShown" [isHome]="false"></app-side-menu>
+<router-outlet></router-outlet>

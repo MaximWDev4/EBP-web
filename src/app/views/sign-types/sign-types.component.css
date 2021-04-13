@@ -1,0 +1,19 @@
+.wrapper {
+  min-height: 95vh;
+  background: #FFFFFF;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.sign-img {
+  background: #818181;
+  padding-top: 60%;
+  width: 60%;
+}
+
+/*# sourceMappingURL=sign-types.component.css.map */

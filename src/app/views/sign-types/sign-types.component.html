@@ -1,0 +1,18 @@
+<div class="container wrapper">
+  <div class="row p-3">
+    <input type="text" class="col-12 form-control" placeholder="Поиск">
+  </div>
+  <mat-form-field appearance="legacy" class="col-12 mt-3" title="Типы знаков">
+    <mat-select [value]="1" placeholder="Типы знаков" (selectionChange)="setSelectedSigns($event.value)">
+      <mat-option [value]="type.id" *ngFor="let type of signTypes">
+        {{type.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="row grid">
+    <div class="cell col-3 mb-3" *ngFor="let sign of selectedSigns">
+      <div class="sign-img"></div>
+      {{sign.name}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+@charset "UTF-8"
+
+.content
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 100%
+
+.logo
+  width: 71px
+  height: 32px
+
+@media screen and (min-width: 375px) and (max-width: 580px)
+#mainMenu
+  display: flex
+
+.navbar-nav
+  width: max-content
+
+.navbar-toggler
+  transition: 0.5s ease-out all
+  border: 0 transparent
+
+.toggled
+  transform: rotate(-90deg)
+
+#mainMenu.show
+  max-height: 230px !important
+
+.ellipse
+  display: block
+  width: 30px
+  height: 30px
+  background: #C4C4C4
+  border: 0 solid #212529
+  border-radius: 50%
