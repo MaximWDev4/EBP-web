@@ -1,0 +1,11 @@
+<div class="record">
+  {{item.name}}
+  <div class="actions">
+    <a class="edit" (click)="expand = !expand"><app-edit [color]="'#4c5b72'" style="width: 20px; height: 20px"></app-edit></a>
+    <a class="delete"><app-delete [color]="'red'"></app-delete></a>
+  </div>
+</div>
+<div class="edit-field expandable" [ngClass]="{'expand': expand}">
+  <div class="content"></div>
+</div>
+

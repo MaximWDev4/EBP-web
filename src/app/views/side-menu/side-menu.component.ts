@@ -1,10 +1,13 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
+import {RoutingMap} from '../../_helpers/routing-map';
 
-type MyRoute = {
+export type MyRoute = {
   name: string,
-  route: string
+  route: string,
+  checked?: boolean,
+  subroutes?: MyRoute[],
 };
 
 @Component({
@@ -17,84 +20,68 @@ export class SideMenuComponent implements OnInit {
   @Input() isHome = true;
   @Output() IsShownChange = new EventEmitter();
   routes: MyRoute[] = [];
-  currentRoute = '';
+  currentRoute: any;
   constructor(
-    private route: ActivatedRoute,
-  ) {
-    this.route.paramMap.subscribe(params => {
-      // this.currentRoute = params.keys();
-    console.log(this.route.snapshot.pathFromRoot);
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
-    if (this.isHome) {
-      this.routes = [
-        {
-          name: 'Типы знаков',
-          route: '/codifier'
-        },
-        {
-          name: 'Паспорта',
-          route: '/identifiers'
-        },
-        {
-          name: 'Роли',
-          route: '/roles'
-        },
-        {
-          name: 'Отчеты',
-          route: '/reports'
-        },
-        {
-          name: 'Слои',
-          route: '/layers'
-        },
-      ];
-    } else {
-      this.routes = [
-        {
-          name: 'Типы знаков',
-          route: './sign-types'
-        },
-        {
-          name: 'Номенклатура ДЗ',
-          route: './nomenclature'
-        },
-        {
-          name: 'Тип дорзнака',
-          route: './znak-type'
-        },
-        {
-          name: 'Тип пленки',
-          route: './shell-type'
-        },
-        {
-          name: 'Материал основы',
-          route: './material'
-        },
-        {
-          name: 'Способ изготовления',
-          route: './preparation'
-        },
-        {
-          name: 'Тип конфигурации',
-          route: './config'
-        },
-        {
-          name: 'Изготовитель',
-          route: './mfr' // manufacturer
-        },
-        {
-          name: 'Направление',
-          route: './direction'
-        },
-        {
-          name: 'Срок действия',
-          route: './expiration'
-        }
-      ];
-    }
+    Object.entries(RoutingMap).map(
+      (value, index, array) => {
+        const route: MyRoute = {
+          name: value[1].name,
+          route: value[1].absoluteRoute,
+          checked: false,
+          subroutes: []
+        };
+        this.routes.push(route);
+        value[1].subroutes?.map((sr) => {
+          this.routes[index].subroutes?.push({name: sr.name, route: sr.absoluteRoute});
+        });
+      }
+    );
+    // console.log(currentSubroutes);
+    // this.routes = [
+    //     {
+    //       name: 'Типы знаков',
+    //       route: '/codifier/sign-types'
+    //     },
+    //     {
+    //       name: 'Номенклатура ДЗ',
+    //       route: './nomenclature'
+    //     },
+    //     {
+    //       name: 'Тип дорзнака',
+    //       route: './znak-type'
+    //     },
+    //     {
+    //       name: 'Тип пленки',
+    //       route: './shell-type'
+    //     },
+    //     {
+    //       name: 'Материал основы',
+    //       route: './material'
+    //     },
+    //     {
+    //       name: 'Способ изготовления',
+    //       route: './preparation'
+    //     },
+    //     {
+    //       name: 'Тип конфигурации',
+    //       route: './config'
+    //     },
+    //     {
+    //       name: 'Изготовитель',
+    //       route: './mfr' // manufacturer
+    //     },
+    //     {
+    //       name: 'Направление',
+    //       route: './direction'
+    //     },
+    //     {
+    //       name: 'Срок действия',
+    //       route: './expiration'
+    //     }
+    //   ];
   }
 
   closeMe(): void {

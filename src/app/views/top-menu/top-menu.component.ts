@@ -10,8 +10,81 @@ export class TopMenuComponent implements OnInit {
   @Output() IsShownChange = new EventEmitter<string>();
   @Input() sideMenuShown = true;
   isLoggedIn = true;
-  hasProfile = true;
   currentUser = 'Admin';
+  routes = [
+    {
+      name: 'Главнвя',
+      route: '/home',
+      checked: false,
+    },
+    {
+      name: 'Кодификатор',
+      route: '/codifier',
+      checked: false,
+      subroutes: [
+        {
+          name: 'Типы знаков',
+          route: '/codifier/sign-types'
+        },
+        {
+          name: 'Номенклатура ДЗ',
+          route: '/codifier/nomenclature'
+        },
+        {
+          name: 'Тип дорзнака',
+          route: '/codifier/znak-type'
+        },
+        {
+          name: 'Тип пленки',
+          route: '/codifier/shell-type'
+        },
+        {
+          name: 'Материал основы',
+          route: '/codifier/material'
+        },
+        {
+          name: 'Способ изготовления',
+          route: '/codifier/preparation'
+        },
+        {
+          name: 'Тип конфигурации',
+          route: '/codifier/config'
+        },
+        {
+          name: 'Изготовитель',
+          route: '/codifier/mfr' // manufacturer
+        },
+        {
+          name: 'Направление',
+          route: '/codifier/direction'
+        },
+        {
+          name: 'Срок действия',
+          route: '/codifier/expiration'
+        }
+      ]
+    },
+    {
+      name: 'Паспорта',
+      route: '/identifiers',
+      checked: false,
+    },
+    {
+      name: 'Роли',
+      route: '/roles/',
+      checked: false,
+    },
+    {
+      name: 'Отчеты',
+      route: '/reports',
+      checked: false,
+    },
+    {
+      name: 'Слои',
+      route: '/layers',
+      checked: false,
+    },
+  ];
   constructor() { }
   ngOnInit(): void {
   }

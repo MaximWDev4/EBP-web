@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {SignTypesComponent} from './sign-types.component';
+import {LayersComponent} from './layers.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SignTypesComponent,
+    component: LayersComponent,
     data: {
-      title: 'Кодификатор'
+      title: 'Главная'
     },
   },
 ];
@@ -16,5 +16,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule {
+export class LayersRoutingModule {
 }

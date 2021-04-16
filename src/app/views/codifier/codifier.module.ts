@@ -1,17 +1,17 @@
 import {NgModule} from '@angular/core';
-import {SignTypesComponent} from './sign-types.component';
-import {HomeRoutingModule} from './sign-types-routing.module';
+import {CodifierComponent} from './codifier.component';
+import {CodifierRoutingModule} from './codifier-routing.module';
 import {MatSelectModule} from '@angular/material/select';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
-    SignTypesComponent,
+    CodifierComponent,
   ],
   imports: [
-    HomeRoutingModule,
+    CodifierRoutingModule,
     MatSelectModule,
     CommonModule
   ],
 })
-export class SignTypesModule { }
+export class CodifierModule { }

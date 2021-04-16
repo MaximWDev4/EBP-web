@@ -1,90 +1,48 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {DefaultLayoutComponent} from './containers/default-layout/default-layout.component';
-import {HomeLayoutComponent} from './containers/home-layout/home-layout.component';
-import {identifierName} from '@angular/compiler';
 import {Page404Component} from './views/page404/page404.component';
+import {RoutingMap} from './_helpers/routing-map';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: RoutingMap.home.routeName,
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomeLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./views/home/home.module').then(m => m.HomeModule),
-      }
-    ]
-  },
-  {
-    path: 'codifier',
+    path: '',
     component: DefaultLayoutComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'sign-types'
+        path: RoutingMap.home.routeName,
+        loadChildren: RoutingMap.home.child,
       },
       {
-        path: 'sign-types',
-        loadChildren: () => import('./views/sign-types/sign-types.module').then(m => m.SignTypesModule),
-        // canActivate: [AuthGuard],
-        // canActivateChild: [AuthGuard],
+        path: RoutingMap.codifier.routeName,
+        loadChildren: RoutingMap.codifier.child
       },
       {
-        path: 'nomenclature',
-        loadChildren: () => import('./views/sign-types/sign-types.module').then(m => m.SignTypesModule),
-      }
-    ],
-  },
-  {
-    path: 'identifiers',
-    component: DefaultLayoutComponent,
-    children: [
+        path: RoutingMap.identifiers.routeName,
+        loadChildren: RoutingMap.identifiers.child,
+      },
       {
-        path: '',
-        loadChildren: () => import('./views/sign-types/sign-types.module').then(m => m.SignTypesModule),
+        path: RoutingMap.roles.routeName,
+        loadChildren: RoutingMap.roles.child,
+      },
+      {
+        path: RoutingMap.reports.routeName,
+        loadChildren: RoutingMap.reports.child,
+      },
+      {
+        path: RoutingMap.layers.routeName,
+        loadChildren: RoutingMap.layers.child,
+      },
+      {
+        path: '**',
+        component: Page404Component,
       }
     ]
-  },
-  {
-    path: 'roles',
-    component: DefaultLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./views/sign-types/sign-types.module').then(m => m.SignTypesModule),
-      }
-    ]
-  },
-  {
-    path: 'reports',
-    component: DefaultLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./views/sign-types/sign-types.module').then(m => m.SignTypesModule),
-      }
-    ]
-  },
-  {
-    path: 'layers',
-    component: DefaultLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./views/sign-types/sign-types.module').then(m => m.SignTypesModule),
-      }
-    ]
-  },
-  {
-    path: '**',
-    component: Page404Component,
   }
 ];
 

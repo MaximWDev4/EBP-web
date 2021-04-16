@@ -1,0 +1,96 @@
+body {
+  background-color: #ECECEC;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+input {
+  background-color: #C4C4C4 !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.nav-item__header {
+  display: flex;
+  z-index: 10000;
+}
+.nav-item__toggle-btn {
+  opacity: 0;
+  width: 38px;
+  height: 38px;
+}
+.nav-item__toggle-btn-label::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 3px;
+  background-color: #ffffff;
+  cursor: pointer;
+  margin: 6px 0;
+  transform: translateY(0.9rem) rotate(20deg);
+  transition: 0.4s;
+}
+.nav-item__toggle-btn-label::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 3px;
+  background-color: #ffffff;
+  cursor: pointer;
+  margin: 6px 10px;
+  transform: translateY(0.9rem) rotate(-20deg);
+  transition: 0.4s;
+}
+.nav-item__toggle-btn-label.checked::before {
+  width: 20px;
+  margin: 6px 0;
+  transform: translateY(1rem) rotate(45deg);
+}
+.nav-item__toggle-btn-label.checked::after {
+  width: 20px;
+  margin: 6px 0;
+  transform: translateY(1rem) rotate(-45deg);
+}
+
+.sub-nav {
+  position: absolute;
+  top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s;
+  width: max-content;
+  max-height: 0;
+  padding: 0 1rem;
+  overflow: hidden;
+  background-color: #343a40;
+}
+.sub-nav.active {
+  max-height: 1000px;
+  padding: 1rem;
+}
+.sub-nav .sub-nav__link {
+  text-decoration: none;
+  width: 100%;
+  color: #ffffff;
+  padding: 0.25rem;
+}
+.sub-nav .sub-nav__link:hover {
+  background-color: #7d7d7d;
+}
+.sub-nav .sub-nav__link.active {
+  background-color: #7d7d7d;
+}
+
+/*# sourceMappingURL=nav-item.component.css.map */

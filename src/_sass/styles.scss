@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'mixins';
 body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #ECECEC;
 }
 * {
@@ -8,8 +10,23 @@ body {
   font-size: 18px;
 }
 input {
-  background-color: #C4C4C4!important;
+  background-color: $background-color!important;
+}
+
+.wrapper {
+  min-height: 95vh;
+  background: #FFFFFF;
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.pointer{
+  cursor: pointer;
+}
+.expandable {
+  max-height: 0;
+  transition: max-height .4s ease-out;
+  &.expand{
+    max-height: 1000px;
+  }
+}

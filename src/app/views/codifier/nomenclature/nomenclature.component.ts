@@ -6,7 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nomenclature.component.sass']
 })
 export class NomenclatureComponent implements OnInit {
-
+  DZ = [
+    {
+      name: '1'
+    },
+    {
+      name: '2'
+    },
+    {
+      name: '3'
+    },
+    {
+      name: '4'
+    },
+    {
+      name: '5'
+    }
+  ];
   constructor() { }
 
   ngOnInit(): void {

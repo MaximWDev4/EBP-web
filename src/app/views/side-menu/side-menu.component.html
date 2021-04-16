@@ -1,4 +1,4 @@
 
-<div id="mySidenav" class="sidenav" [ngStyle]="{'width': isShown ? '15%' : '0'}">
-  <a routerLink="{{route.route}}" *ngFor="let route of routes" [routerLinkActive]="'active'">{{route.name}}</a>
+<div id="mySidenav" class="sidenav" [ngStyle]="{'width': isShown ? '18%' : '0'}">
+  <app-side-menu-item [route]="route"  *ngFor="let route of routes"></app-side-menu-item>
 </div>

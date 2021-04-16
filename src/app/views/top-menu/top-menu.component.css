@@ -1,3 +1,25 @@
+body {
+  background-color: #ECECEC;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+input {
+  background-color: #C4C4C4 !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .content {
   display: flex;
   justify-content: space-between;
@@ -6,14 +28,16 @@
 }
 
 .logo {
+  text-align: center;
   width: 71px;
   height: 32px;
 }
 
-#mainMenu {
-  display: flex;
+@media screen and (min-width: 375px) and (max-width: 580px) {
+  #mainMenu {
+    display: flex;
+  }
 }
-
 .navbar-nav {
   width: max-content;
 }

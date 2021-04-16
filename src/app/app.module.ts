@@ -9,6 +9,8 @@ import { SideMenuComponent } from './views/side-menu/side-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeLayoutComponent } from './containers/home-layout/home-layout.component';
 import { Page404Component } from './views/page404/page404.component';
+import { NavItemComponent } from './views/top-menu/nav-item/nav-item.component';
+import { SideMenuItemComponent } from './views/side-menu/side-menu-item/side-menu-item.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { Page404Component } from './views/page404/page404.component';
     SideMenuComponent,
     HomeLayoutComponent,
     Page404Component,
+    NavItemComponent,
+    SideMenuItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +29,9 @@ import { Page404Component } from './views/page404/page404.component';
     BrowserAnimationsModule
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
