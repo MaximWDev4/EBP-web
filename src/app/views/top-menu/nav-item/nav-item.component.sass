@@ -1,0 +1,65 @@
+@import "../../../../_sass/styles"
+
+.nav-item
+  &__header
+    display: flex
+    z-index: 10000
+  &__toggle-btn
+    opacity: 0
+    width: 38px
+    height: 38px
+  &__toggle-btn-label
+    &::before
+      content: ''
+      position: absolute
+      display: block
+      width: 12px
+      height: 3px
+      background-color: $text-color
+      cursor: pointer
+      margin: 6px 0
+      transform: translateY(.9rem) rotate(20deg)
+      transition: 0.4s
+    &::after
+      content: ''
+      position: absolute
+      display: block
+      width: 12px
+      height: 3px
+      background-color: $text-color
+      cursor: pointer
+      margin: 6px 10px
+      transform: translateY(.9rem) rotate(-20deg)
+      transition: .4s
+    &.checked
+      &::before
+        width: 20px
+        margin: 6px 0
+        transform: translateY(1rem)  rotate(45deg)
+      &::after
+        width: 20px
+        margin: 6px 0
+        transform: translateY(1rem)  rotate(-45deg)
+
+.sub-nav
+  position: absolute
+  top: 2.5rem
+  display: flex
+  flex-direction: column
+  width: max-content
+  max-height: 0
+  padding: 0 1rem
+  overflow: hidden
+  background-color: $main-nav-background-color
+  &.expand
+    padding: 1rem
+  .sub-nav__link
+    text-decoration: none
+    width: 100%
+    color: $text-color
+    padding: .25rem
+    &:hover
+      background-color: $main-nav-hover-background-color
+    &.active
+      background-color: $main-nav-hover-background-color
+
