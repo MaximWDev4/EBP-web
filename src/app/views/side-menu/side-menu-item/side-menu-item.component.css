@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #ECECEC;
 }
 
@@ -11,16 +13,30 @@ input {
   background-color: #C4C4C4 !important;
 }
 
+.wrapper {
+  min-height: 95vh;
+  background: #FFFFFF;
+}
+
 html, body {
   height: 100%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.expandable {
+  max-height: 0;
+  transition: max-height 0.4s ease-out;
+}
+.expandable.expand {
+  max-height: 1000px;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-body {
   background-color: #ECECEC;
 }
 
@@ -33,13 +49,25 @@ input {
   background-color: #C4C4C4 !important;
 }
 
+.wrapper {
+  min-height: 95vh;
+  background: #FFFFFF;
+}
+
 html, body {
   height: 100%;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+.pointer {
+  cursor: pointer;
+}
+
+.expandable {
+  max-height: 0;
+  transition: max-height 0.4s ease-out;
+}
+.expandable.expand {
+  max-height: 1000px;
 }
 
 .nav-item__header {
@@ -91,15 +119,13 @@ body {
   top: 2.5rem;
   display: flex;
   flex-direction: column;
-  transition: all 0.4s;
   width: max-content;
   max-height: 0;
   padding: 0 1rem;
   overflow: hidden;
   background-color: #343a40;
 }
-.sub-nav.active {
-  max-height: 1000px;
+.sub-nav.expand {
   padding: 1rem;
 }
 .sub-nav .sub-nav__link {
@@ -133,10 +159,8 @@ body {
   display: flex;
   border-left: solid gray 2px;
   background-color: transparent;
-  transition: max-height 0.4s ease-out;
 }
-.sub-nav.active {
-  max-height: 900px;
+.sub-nav.expand {
   padding: 0 1rem;
 }
 .sub-nav .sub-nav__link {

@@ -23,10 +23,20 @@ html, body { height: 100%; }
 .pointer{
   cursor: pointer;
 }
-.expandable {
+.expandable-v {
   max-height: 0;
+  overflow: hidden;
   transition: max-height .4s ease-out;
   &.expand{
-    max-height: 1000px;
+    &__1000 {
+      max-height: 1000px;
+    }
+    &__500 {
+      max-height: 500px;
+    }
+    &__300 {
+      max-height: 300px;
+    }
   }
 }
+

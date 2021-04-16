@@ -12,7 +12,7 @@
       (click)="route.checked = !route.checked"
       *ngIf="route.hasOwnProperty('subroutes')">
   </div>
-  <div class="sub-nav" *ngIf="route.hasOwnProperty('subroutes')" [ngClass]="{'active': route.checked}">
+  <div class="sub-nav expandable-v" *ngIf="route.hasOwnProperty('subroutes')" [ngClass]="{'expand__1000': route.checked}">
     <a class="sub-nav__link"
        [routerLink]="subroute.route"
        [routerLinkActive]="'active'"

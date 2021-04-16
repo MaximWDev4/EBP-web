@@ -26,12 +26,19 @@ html, body {
   cursor: pointer;
 }
 
-.expandable {
+.expandable-v {
   max-height: 0;
+  overflow: hidden;
   transition: max-height 0.4s ease-out;
 }
-.expandable.expand {
+.expandable-v.expand__1000 {
   max-height: 1000px;
+}
+.expandable-v.expand__500 {
+  max-height: 500px;
+}
+.expandable-v.expand__300 {
+  max-height: 300px;
 }
 
 /*# sourceMappingURL=styles.css.map */

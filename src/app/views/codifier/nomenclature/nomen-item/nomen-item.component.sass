@@ -3,7 +3,12 @@
   padding: .5rem
   display: flex
   justify-content: space-between
-  .visited
+  &.visited
     background-color: $background-color
+  &.deleted
+    background-color: #ea7676
+    color: #818181
+    .pointer
+      cursor: default!important
 .content
   height: 400px
