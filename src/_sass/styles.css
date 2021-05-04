@@ -10,7 +10,15 @@ body {
 }
 
 input {
-  background-color: #C4C4C4 !important;
+  background-color: #C4C4C4;
+}
+
+.col-0\.5 {
+  width: 4%;
+}
+
+.col-1\.5 {
+  width: 12.5%;
 }
 
 .wrapper {
@@ -24,6 +32,22 @@ html, body {
 
 .pointer {
   cursor: pointer;
+}
+
+.highlightText {
+  font-weight: bold;
+}
+
+.grid-img {
+  width: 60%;
+  padding-top: 60%;
+}
+
+.no-img {
+  background-image: url("../assets/corrupted_image.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .expandable-v {

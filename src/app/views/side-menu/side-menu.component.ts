@@ -1,14 +1,8 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
-import {RoutingMap} from '../../_helpers/routing-map';
+import {MyRoute, RoutingMap} from '../../_helpers/routing-map';
 
-export type MyRoute = {
-  name: string,
-  route: string,
-  checked?: boolean,
-  subroutes?: MyRoute[],
-};
 
 @Component({
   selector: 'app-side-menu',
@@ -39,49 +33,6 @@ export class SideMenuComponent implements OnInit {
         });
       }
     );
-    // console.log(currentSubroutes);
-    // this.routes = [
-    //     {
-    //       name: 'Типы знаков',
-    //       route: '/codifier/sign-types'
-    //     },
-    //     {
-    //       name: 'Номенклатура ДЗ',
-    //       route: './nomenclature'
-    //     },
-    //     {
-    //       name: 'Тип дорзнака',
-    //       route: './znak-type'
-    //     },
-    //     {
-    //       name: 'Тип пленки',
-    //       route: './shell-type'
-    //     },
-    //     {
-    //       name: 'Материал основы',
-    //       route: './material'
-    //     },
-    //     {
-    //       name: 'Способ изготовления',
-    //       route: './preparation'
-    //     },
-    //     {
-    //       name: 'Тип конфигурации',
-    //       route: './config'
-    //     },
-    //     {
-    //       name: 'Изготовитель',
-    //       route: './mfr' // manufacturer
-    //     },
-    //     {
-    //       name: 'Направление',
-    //       route: './direction'
-    //     },
-    //     {
-    //       name: 'Срок действия',
-    //       route: './expiration'
-    //     }
-    //   ];
   }
 
   closeMe(): void {

@@ -4,6 +4,7 @@ type Sign = {
   name: string,
   type: number,
   id: number
+  image?: string
 };
 
 type SignType = {

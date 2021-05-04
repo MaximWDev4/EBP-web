@@ -1,1 +1,14 @@
-<p>identifiers works!</p>
+<app-ident-filters [submitted]="false" (Submit)="filter($event)" class=" w-100"></app-ident-filters>
+<div class="w-100 wrapper sheet">
+<!--  table-->
+  <div class="w-100">
+    <app-ident-item  class="border-top" [item]="colNames"></app-ident-item>
+    <app-ident-item class="border-top" [item]="n" *ngFor="let n of ids | paginate: {itemsPerPage: itemsPerPage, currentPage: p}"></app-ident-item>
+  </div>
+<!--  /table-->
+<!--  pagination-controls-wrapper -->
+  <div class="row justify-content-center w-100">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+<!--  /pagination-controls-wrapper -->
+</div>

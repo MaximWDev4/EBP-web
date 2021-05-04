@@ -1,1 +1,11 @@
-<p>codifier works!</p>
+<div class="container wrapper">
+  <div class="row p-5">
+    <div class="row grid">
+      <div class="cell col-3 mb-3" *ngFor="let route of subRoutingMap">
+        <div class="grid-img no-img" *ngIf="!route.image"></div>
+        <img class="grid-img" [src]="route.image" alt="Нет изображения" *ngIf="route.image">
+        <a routerLink="{{route.absoluteRoute}}">{{route.name}}</a>
+      </div>
+    </div>
+  </div>
+</div>

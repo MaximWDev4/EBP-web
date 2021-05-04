@@ -1,0 +1,62 @@
+<div [formGroup]="filtersForm" class="row w-100 justify-content-end">
+  <div class="form-group col-md-2">
+    <label for="idType" class="form-label">Тип</label>
+    <select id="idType" formControlName="idType" class="form-control custom-select"
+            [ngClass]="{ 'is-invalid': isInvalid('idType') }">
+      <option value="Approved">Проверенные</option>
+      <option value="Maintaining">Не установленно</option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-2">
+    <label for="from" class="form-label">Дата От</label>
+
+    <input #dpFrom
+           formControlName="dateFrom"
+           ngbDatepicker #FromDatepicker="ngbDatepicker"
+           class="form-control"
+           readonly
+           type="date"
+           id="from"
+           (click)="FromDatepicker.toggle()"
+           placeholder=""
+           [autoClose]="'outside'"
+           [displayMonths]="1"
+           [startDate]="maxDateFrom"
+           [minDate]="minDateFrom"
+           [maxDate]="maxDateFrom"
+           outsideDays="hidden"
+           (dateSelect)="onDateSelection($event, FromDatepicker, 'dateFrom')"
+           [ngClass]="{ 'is-invalid': isInvalid('dateFrom') }"
+    />
+<!--    <div *ngIf="isInvalid('dob')" class="invalid-feedback">-->
+<!--      <div *ngIf="getErrors('dob').required">Укажите дату рождения</div>-->
+<!--    </div>-->
+  </div>
+  <div class="form-group col-md-2">
+    <label for="to" class="form-label">Дата До</label>
+
+    <input #dpTo
+           formControlName="dateTo"
+           ngbDatepicker #ToDatepicker="ngbDatepicker"
+           class="form-control"
+           readonly
+           type="date"
+           id="to"
+           (click)="ToDatepicker.toggle()"
+           placeholder=""
+           [autoClose]="'outside'"
+           [displayMonths]="1"
+           [startDate]="maxDateTo"
+           [minDate]="minDateTo"
+           [maxDate]="maxDateTo"
+           outsideDays="hidden"
+           (dateSelect)="onDateSelection($event, ToDatepicker, 'dateTo')"
+           [ngClass]="{ 'is-invalid': isInvalid('dateTo') }"
+    />
+    <!--    <div *ngIf="isInvalid('dob')" class="invalid-feedback">-->
+    <!--      <div *ngIf="getErrors('dob').required">Укажите дату рождения</div>-->
+    <!--    </div>-->
+  </div>
+  <button class="submit" (click)="submit()">Фильтрация</button>
+</div>

@@ -1,3 +1,15 @@
+.map-container {
+  position: relative;
+  height: 93vh;
+  z-index: 0;
+}
 
+.map-frame {
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
 
 /*# sourceMappingURL=home.component.css.map */

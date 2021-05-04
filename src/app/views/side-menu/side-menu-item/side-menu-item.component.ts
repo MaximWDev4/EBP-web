@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MyRoute} from '../side-menu.component';
+import {MyRoute} from '../../../_helpers/routing-map';
 
 @Component({
   selector: 'app-side-menu-item',

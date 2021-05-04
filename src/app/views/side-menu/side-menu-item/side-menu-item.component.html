@@ -10,7 +10,7 @@
       type="checkbox"
       class="nav-item__toggle-btn"
       (click)="route.checked = !route.checked"
-      *ngIf="route.hasOwnProperty('subroutes')">
+      *ngIf="route.subroutes ? route.subroutes.length > 0 : false">
   </div>
   <div class="sub-nav expandable-v" *ngIf="route.hasOwnProperty('subroutes')" [ngClass]="{'expand__1000': route.checked}">
     <a class="sub-nav__link"

@@ -1,11 +1,12 @@
 import {LoadChildrenCallback} from '@angular/router';
 
-type RouteMap = {
+export type RouteMap = {
   name: string,
   absoluteRoute: string,
   routeName: string,
   child?: LoadChildrenCallback,
   checked?: boolean,
+  image?: string,
   subroutes?: RouteMap[]
 };
 
@@ -18,11 +19,18 @@ type RoutingMap = {
   layers: RouteMap,
 };
 
+export type MyRoute = {
+  name: string,
+  route: string,
+  checked?: boolean,
+  subroutes?: MyRoute[],
+};
+
 export const RoutingMap: RoutingMap = {
   home: {
-    name: 'Главнвя',
+    name: 'Карта',
     routeName: 'home',
-    absoluteRoute: '/home',
+    absoluteRoute: '/home/656543.76337457/4791124.0180348/5',
     child: () => import('../views/home/home.module').then(m => m.HomeModule),
     checked: false,
   },
@@ -36,6 +44,7 @@ export const RoutingMap: RoutingMap = {
       {
         name: 'Типы знаков',
         routeName: 'sign-types',
+        image: '',
         absoluteRoute: '/codifier/sign-types',
       },
       {

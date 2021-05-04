@@ -1,9 +1,9 @@
 <div class="container wrapper sheet">
   <div class="row p-3">
-    <input type="text" class="col-12 form-control" placeholder="Поиск">
+    <input [(ngModel)]="query" (ngModelChange)="queryChange()" type="text" class="col-12 form-control" placeholder="Поиск">
   </div>
   <div class="border-bottom mb-3"><p>Номенклатура дз</p><div class="line"></div></div>
   <div class="row">
-    <app-nomen-item class="border-top" [item]="n" *ngFor="let n of DZ"></app-nomen-item>
+    <app-nomen-item class="border-top" [query]="query" [item]="n" *ngFor="let n of DDZ"></app-nomen-item>
   </div>
 </div>

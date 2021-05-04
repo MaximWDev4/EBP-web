@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-nomenclature',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nomenclature.component.sass']
 })
 export class NomenclatureComponent implements OnInit {
-  DZ = [
+  query: string = '';
+  DZ: {name: string}[] = [
     {
       name: '2 - Высокая интенсивность - Лист стальной оцинкованный - Метод аппликации'
     },
@@ -23,9 +25,17 @@ export class NomenclatureComponent implements OnInit {
       name: '1 - Средняя интенсивность - Лист пластиковый - Метод аппликации'
     }
   ];
-  constructor() { }
+  DDZ: {name: string}[];
+  constructor() {
+    this.DDZ = this.DZ;
+  }
 
   ngOnInit(): void {
   }
 
+  queryChange(): void {
+    this.DDZ = this.DZ.filter((item) => {
+      return item.name.includes(this.query);
+    });
+  }
 }

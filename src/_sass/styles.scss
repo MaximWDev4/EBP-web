@@ -10,7 +10,16 @@ body {
   font-size: 18px;
 }
 input {
-  background-color: $background-color!important;
+  background-color: $background-color
+}
+
+.col-0\.5{
+  width: 4%;
+  @extend .col-1!optional
+}
+.col-1\.5{
+  width: 12.5%;
+  @extend .col-1!optional
 }
 
 .wrapper {
@@ -23,6 +32,23 @@ html, body { height: 100%; }
 .pointer{
   cursor: pointer;
 }
+
+.highlightText {
+  font-weight: bold;
+}
+
+.grid-img {
+  width: 60%;
+  padding-top: 60%;
+}
+
+.no-img {
+  background-image: url("../assets/corrupted_image.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .expandable-v {
   max-height: 0;
   overflow: hidden;

@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {UtilitiesService} from '../../../_servieces/utilities.service';
+import {MyRoute} from '../../../_helpers/routing-map';
 
 @Component({
   selector: 'app-nav-item',
@@ -8,7 +9,7 @@ import {UtilitiesService} from '../../../_servieces/utilities.service';
 })
 export class NavItemComponent implements OnInit {
   @ViewChild('somePopup', { read: ElementRef, static: false }) somePopup: ElementRef = new ElementRef('somePopup');
-  @Input() route: any;
+  @Input() route: MyRoute = {route: '', checked: false, subroutes: [], name: ''};
 
   constructor(private utilitiesService: UtilitiesService) { }
 

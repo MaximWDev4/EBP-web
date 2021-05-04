@@ -11,6 +11,9 @@ import { HomeLayoutComponent } from './containers/home-layout/home-layout.compon
 import { Page404Component } from './views/page404/page404.component';
 import { NavItemComponent } from './views/top-menu/nav-item/nav-item.component';
 import { SideMenuItemComponent } from './views/side-menu/side-menu-item/side-menu-item.component';
+import { NgbDateRuParserFormatter } from './_helpers/ngb-date-ru-parser-formatter';
+import { HttpClientModule } from '@angular/common/http';
+import { PopUpService } from './_servieces/popup.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,10 @@ import { SideMenuItemComponent } from './views/side-menu/side-menu-item/side-men
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ NgbDateRuParserFormatter, PopUpService ],
   exports: [
   ],
   bootstrap: [AppComponent]

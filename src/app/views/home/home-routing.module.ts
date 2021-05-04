@@ -4,6 +4,13 @@ import {HomeComponent} from './home.component';
 
 const routes: Routes = [
   {
+    path: ':x/:y/:zoom',
+    component: HomeComponent,
+    data: {
+      title: 'Главная'
+    },
+  },
+  {
     path: '',
     component: HomeComponent,
     data: {
