@@ -1,4 +1,17 @@
-@import "../codifier.component"
+@import "src/_sass/styles"
+.record
+  padding: .5rem
+  display: flex
+  justify-content: space-between
+  &.visited
+    background-color: $background-color
+  &.deleted
+    background-color: #ea7676
+    color: #818181
+    .pointer
+      cursor: default!important
+.content
+  height: 400px
 .header
   border-bottom: #00000050 solid 1px
   margin: 0 20px 1rem 20px

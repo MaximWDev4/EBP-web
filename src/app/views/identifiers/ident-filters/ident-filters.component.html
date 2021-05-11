@@ -1,6 +1,8 @@
-<div [formGroup]="filtersForm" class="row w-100 justify-content-end">
-  <div class="form-group col-md-2">
-    <label for="idType" class="form-label">Тип</label>
+<div [formGroup]="filtersForm" class="row w-100 align-items-end justify-content-end">
+  <div class="form-group align-items-end d-flex col-md-2">
+    <label for="idType" class="form-label">
+<!--      Тип-->
+    </label>
     <select id="idType" formControlName="idType" class="form-control custom-select"
             [ngClass]="{ 'is-invalid': isInvalid('idType') }">
       <option value="Approved">Проверенные</option>
@@ -9,7 +11,9 @@
   </div>
 
   <div class="form-group col-md-2">
-    <label for="from" class="form-label">Дата От</label>
+    <label for="from" class="form-label">
+<!--      Дата От-->
+    </label>
 
     <input #dpFrom
            formControlName="dateFrom"
@@ -34,7 +38,9 @@
 <!--    </div>-->
   </div>
   <div class="form-group col-md-2">
-    <label for="to" class="form-label">Дата До</label>
+    <label for="to" class="form-label">
+<!--      Дата До-->
+    </label>
 
     <input #dpTo
            formControlName="dateTo"
@@ -58,5 +64,5 @@
     <!--      <div *ngIf="getErrors('dob').required">Укажите дату рождения</div>-->
     <!--    </div>-->
   </div>
-  <button class="submit" (click)="submit()">Фильтрация</button>
+  <button class="submit col-2 mb-3 btn" (click)="submit()">Фильтрация</button>
 </div>

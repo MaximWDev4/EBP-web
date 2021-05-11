@@ -393,15 +393,20 @@ export class IdentifiersComponent implements OnInit {
   filter(f: any): void {
     this.drawbleIds = this.ids.filter((id) => {
       console.log(Date.parse(formatDateStr(id.date)), Date.UTC(f.dateFrom.value.year, f.dateFrom.value.month, f.dateFrom.value.day),
-        Date.parse(formatDateStr(id.date)), Date.UTC(f.dateTo.value.year, f.dateTo.value.month, f.dateTo.value.day), Date.parse(formatDateStr(id.date)) > Date.UTC(f.dateFrom.value.year, f.dateFrom.value.month, f.dateFrom.value.day) &&
+        Date.parse(formatDateStr(id.date)), Date.UTC(f.dateTo.value.year, f.dateTo.value.month, f.dateTo.value.day),
+        Date.parse(formatDateStr(id.date)) > Date.UTC(f.dateFrom.value.year, f.dateFrom.value.month, f.dateFrom.value.day) &&
         Date.parse(formatDateStr(id.date)) < Date.UTC(f.dateTo.value.year, f.dateTo.value.month, f.dateTo.value.day));
       return Date.parse(formatDateStr(id.date)) > Date.UTC(f.dateFrom.value.year, f.dateFrom.value.month, f.dateFrom.value.day) &&
         Date.parse(formatDateStr(id.date)) < Date.UTC(f.dateTo.value.year, f.dateTo.value.month, f.dateTo.value.day);
     });
-    console.log(f);
   }
 
   get pageCount(): number {
     return Math.ceil(this.ids.length / this.itemsPerPage);
+  }
+
+  PaginationEvent(e: number): void {
+    window.scroll(0, 0);
+    this.p = e;
   }
 }
