@@ -2,11 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {EditComponent} from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
+import {CheckmarkComponent} from './checkmark/checkmark.component';
 
 @NgModule({
   declarations: [
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    CheckmarkComponent
   ],
   imports: [
     CommonModule,
@@ -14,6 +16,7 @@ import { DeleteComponent } from './delete/delete.component';
   exports: [
     EditComponent,
     DeleteComponent,
+    CheckmarkComponent
   ]
 })
 export class SvgModule { }

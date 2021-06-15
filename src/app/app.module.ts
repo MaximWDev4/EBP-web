@@ -14,6 +14,10 @@ import { SideMenuItemComponent } from './views/side-menu/side-menu-item/side-men
 import { NgbDateRuParserFormatter } from './_helpers/ngb-date-ru-parser-formatter';
 import { HttpClientModule } from '@angular/common/http';
 import { PopUpService } from './_servieces/popup.service';
+import {ErrorService} from './_servieces/error.service';
+import {InfoService} from './_servieces/info.service';
+import {SuccessService} from './_servieces/success.service';
+import {ToastModule} from './views/toast/toast.module';
 
 @NgModule({
   declarations: [
@@ -30,9 +34,16 @@ import { PopUpService } from './_servieces/popup.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule,
   ],
-  providers: [ NgbDateRuParserFormatter, PopUpService ],
+  providers: [
+    NgbDateRuParserFormatter,
+    PopUpService,
+    ErrorService,
+    InfoService,
+    SuccessService,
+  ],
   exports: [
   ],
   bootstrap: [AppComponent]

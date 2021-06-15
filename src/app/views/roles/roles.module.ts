@@ -5,19 +5,26 @@ import {MatSelectModule} from '@angular/material/select';
 import {CommonModule} from '@angular/common';
 import {RoleItemComponent} from './role-item/role-item.component';
 import {SvgModule} from '../../svg/svg.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InfoService} from '../../_servieces/info.service';
+import { SelectDropdownComponent } from './select-dropdown/select-dropdown.component';
 
 @NgModule({
   declarations: [
     RolesComponent,
     RoleItemComponent,
+    SelectDropdownComponent,
   ],
   imports: [
     RolesRoutingModule,
     MatSelectModule,
     SvgModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
+  providers: [
+    InfoService
+  ]
 })
 export class RolesModule { }

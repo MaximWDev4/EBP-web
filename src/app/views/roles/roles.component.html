@@ -3,10 +3,13 @@
     <input [(ngModel)]="query" (ngModelChange)="queryChange()" type="text" class="col-12 form-control" placeholder="Поиск">
   </div>
   <div class="row border-bottom mb-3">
-    <div class=" col-6"><p>Роли</p></div>
+    <div class=" col-3"><p>Роли</p></div>
     <!--  <mat-form-field appearance="outline" class="col-3 justify-content-end custom-select" title="Типы знаков">-->
-    <mat-select class="sign-type-select col-3 justify-content-end" [value]="1" placeholder="Все роли" (selectionChange)="setSelectedRoles($event.value)">
-      <mat-option [value]="type.roleName" *ngFor="let type of roles.filter(onlyUnique)">
+    <mat-select class="sign-type-select col-3 justify-content-end" [value]="0" placeholder="Все роли" (selectionChange)="setSelectedRoles($event.value)">
+      <mat-option [value]="0">
+        Все роли
+      </mat-option>
+      <mat-option [value]="type.roleName" *ngFor="let type of filterRoles">
         {{type.roleName}}
       </mat-option>
     </mat-select>

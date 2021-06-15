@@ -1,0 +1,8 @@
+<div class="dcontainer text-left">
+    <div *ngFor="let p of permissions" style="width: 160px">
+      <input type="checkbox" id="{{p}}" class="mat-checkbox m-1"
+             style="height: 20px; width: 20px;"
+             value="{{p}}" (submit)="selectPermission.emit(p)">
+      <label class="m-1" for="{{p}}">{{p}}</label>
+    </div>
+</div>

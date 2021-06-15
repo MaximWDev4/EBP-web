@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-role-item',
@@ -11,16 +12,34 @@ export class RoleItemComponent implements OnInit {
   expand = false;
   visited = false;
   deleted = false;
-  constructor() { }
+  showDropdown = false;
+  form: FormGroup = new FormGroup({});
+  constructor() {
 
-  ngOnInit(): void {
   }
 
-  highlight(): HTMLElement {
+  ngOnInit(): void {
+    this.form = new FormGroup(
+    {
+      firstname: new FormControl(this.item.firstname), // имя
+      middlename: new FormControl(this.item.middlename), // отчество
+      surname: new FormControl(this.item.surname), // фамилия
+      login: new FormControl(this.item.login),
+      nom:  new FormControl(this.item.nom),
+      pass:  new FormControl(this.item.pass),
+      active:  new FormControl(this.item.active),
+      role: new FormControl(this.item.role),
+      permissions: new FormControl(this.item.permissions),
+    }
+  );
+  }
+
+  highlight(): string {
     if (!this.query) {
-      return this.item.name;
+      return `<span> ${[ this.item.firstname, this.item.middlename, this.item.surname ].join(' ')}</span>`;
     } else {
-      return this.item.name.replace(new RegExp(this.query, 'gi'), (match: any) => {
+      return [ this.item.firstname, this.item.middlename, this.item.surname ].join(' ')
+        .replace(new RegExp(this.query, 'gi'), (match: any) => {
         return '<span class="highlightText">' + match + '</span>';
       });
     }
@@ -33,4 +52,7 @@ export class RoleItemComponent implements OnInit {
     }
   }
 
+  save(): void {
+      this.expand = false;
+  }
 }
