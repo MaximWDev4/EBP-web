@@ -6,3 +6,32 @@
 .submit
   height: 42.5px
   background-color: $background-color
+.hidden
+  width: 0
+  margin: 0
+  border: none
+  padding: 0
+
+.ngb-dp-day, .ngb-dp-week-number, .ngb-dp-weekday
+  height: 2rem
+  width: 2rem
+
+::ng-deep
+  &.ngb-dp-weekday
+    color:  rgb(77, 77, 78) !important
+  &.btn-link:hover, .btn-link
+    color: rgb(77, 77, 78) !important
+
+.custom-day
+  text-align: center
+  padding: 0.185rem 0.25rem
+  display: inline-block
+  height: 2rem
+  width: 2rem
+
+.custom-day.range, .custom-day:hover
+  background-color: rgba(77, 77, 78)
+  color: white
+
+.custom-day.faded
+  background-color: rgb(43, 43, 44)

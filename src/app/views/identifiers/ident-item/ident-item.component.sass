@@ -3,11 +3,17 @@
 .record
   border-top: solid #212529 thin
   div
-    text-align: center
-    padding: .5rem 0
+    text-align: left
+    padding: 0 0 0 1rem
     font-size: .8rem
   &.head
+    position: sticky
+    top: 65px
+    background: #C4C4C4
+    z-index: 90
     div
-      text-align: center!important
+      text-align: left!important
   .performerID, .standardSize
     word-break: break-all
+.mainStr, .crossStr, .qrCode
+  overflow: hidden

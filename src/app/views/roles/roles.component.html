@@ -13,11 +13,19 @@
         {{type.roleName}}
       </mat-option>
     </mat-select>
+    <div class="col-6 text-right"><button class="btn btn-dark" (click)="expand = !expand">Добавить пользователя +</button></div>
   </div>
-  <!--  </mat-form-field>-->
-
+  <div class="edit-field expandable-v" [ngClass]="{'expand__500': expand}">
+    <app-add-user></app-add-user>
+  </div>
   <div class="row">
-    <app-role-item class="border-top w-100" [query]="query" [item]="n" *ngFor="let n of displayedRoles"></app-role-item>
+    <app-role-item
+      class="border-top w-100"
+      [query]="query"
+      [item]="n"
+      (confirmEdit)="displayedRoles[i] = $event"
+      *ngFor="let n of displayedRoles; let i = index">
+    </app-role-item>
   </div>
 </div>
 

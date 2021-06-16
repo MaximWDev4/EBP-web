@@ -1,0 +1,30 @@
+<div class="record" [formGroup]="form">
+  <div class="row align-items-end justify-content-center m-0 p-0">
+    <label for="sn" class="col-3 m-0 mr-3 p-0">Фамилия</label>
+    <label for="fn" class="col-3 m-0 mr-3 p-0">Имя</label>
+    <label for="mn" class="col-3 m-0 mr-2 p-0">Отчество</label>
+    <div class="col-2"></div>
+  </div>
+  <div class="row align-items-center justify-content-center">
+    <input id="sn" type="text" class="form-control col-3 mr-2" formControlName="surname">
+    <input id="fn" type="text" class="form-control col-3 mr-2" formControlName="firstname">
+    <input id="mn" type="text" class="form-control col-3 mr-2" formControlName="middlename">
+
+    <div class="role col-2 text-left">
+      <div class="btn btn-dark w-100">
+        Роль
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-around mb-1 mt-1">
+    <input type="text" class="form-control col-4" formControlName="login" placeholder="Логин">
+    <input type="text" class="form-control col-4" formControlName="nom" placeholder="Номер телефона">
+  </div>
+  <div class="row justify-content-around mb-1 mt-1">
+    <input type="text" class="form-control col-4" formControlName="pass" placeholder="Пароль">
+    <div class="form-control col-4">
+      <label for="isActive" class="mr-3">Активен</label>
+      <input id="isActive" type="checkbox" class="mat-checkbox" style="height: 25px; width: 25px;" formControlName="active">
+    </div>
+  </div>
+</div>

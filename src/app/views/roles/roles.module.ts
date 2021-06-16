@@ -8,12 +8,14 @@ import {SvgModule} from '../../svg/svg.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InfoService} from '../../_servieces/info.service';
 import { SelectDropdownComponent } from './select-dropdown/select-dropdown.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   declarations: [
     RolesComponent,
     RoleItemComponent,
     SelectDropdownComponent,
+    AddUserComponent,
   ],
   imports: [
     RolesRoutingModule,

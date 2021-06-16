@@ -17,7 +17,7 @@ export type IDRecord = {
   performerID: number|string,
   qrCode: string,
   workType: number|string,
-  date: string,
+  date: number | string,
   firstRow: boolean,
 };
 
@@ -58,7 +58,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 94,
         qrCode: 'QR SMEU14565411565',
         workType: 100,
-        date: '2021-05-04 20:22:00',
+        date: 1623829495000,
         firstRow: false,
       },
       {
@@ -72,7 +72,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -86,7 +86,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -100,7 +100,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-03 20:22:00',
+        date: 1623829495000,
         firstRow: false,
       },
       {
@@ -114,7 +114,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-06 20:22:00',
+        date: 1623829495000,
         firstRow: false,
       },
       {
@@ -128,7 +128,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-04-01 20:22:00',
+        date: 1623829495000,
         firstRow: false,
       },
       {
@@ -142,7 +142,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 94,
         qrCode: 'QR SMEU14565411565',
         workType: 100,
-        date: '2021-05-02 20:22:00',
+        date: 1623829495000,
         firstRow: false,
       },
       {
@@ -156,7 +156,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -170,7 +170,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -184,7 +184,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -198,7 +198,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -212,7 +212,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -226,7 +226,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 94,
         qrCode: 'QR SMEU14565411565',
         workType: 100,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -240,7 +240,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -254,7 +254,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -268,7 +268,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -282,7 +282,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -296,7 +296,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -310,7 +310,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 94,
         qrCode: 'QR SMEU14565411565',
         workType: 100,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -324,7 +324,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -338,7 +338,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -352,7 +352,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -366,7 +366,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 100,
         qrCode: 'QR 2222222',
         workType: 10,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
       {
@@ -380,7 +380,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: '2021-05-01 20:22:00',
+        date: 1625767200000,
         firstRow: false,
       },
     ];
@@ -390,15 +390,9 @@ export class IdentifiersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  filter(f: any): void {
-    this.drawbleIds = this.ids.filter((id) => {
-      console.log(Date.parse(formatDateStr(id.date)), Date.UTC(f.dateFrom.value.year, f.dateFrom.value.month, f.dateFrom.value.day),
-        Date.parse(formatDateStr(id.date)), Date.UTC(f.dateTo.value.year, f.dateTo.value.month, f.dateTo.value.day),
-        Date.parse(formatDateStr(id.date)) > Date.UTC(f.dateFrom.value.year, f.dateFrom.value.month, f.dateFrom.value.day) &&
-        Date.parse(formatDateStr(id.date)) < Date.UTC(f.dateTo.value.year, f.dateTo.value.month, f.dateTo.value.day));
-      return Date.parse(formatDateStr(id.date)) > Date.UTC(f.dateFrom.value.year, f.dateFrom.value.month, f.dateFrom.value.day) &&
-        Date.parse(formatDateStr(id.date)) < Date.UTC(f.dateTo.value.year, f.dateTo.value.month, f.dateTo.value.day);
-    });
+  filter(f: {fromDate: number, toDate: number}): void {
+    this.drawbleIds = this.ids.filter((id) =>
+      (id.date > f.fromDate && id.date < f.toDate));
   }
 
   get pageCount(): number {

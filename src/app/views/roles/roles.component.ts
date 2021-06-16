@@ -10,7 +10,7 @@ type Role = {
   login: string,
   pass: string,
   nom: string,
-  permissions: boolean[],
+  permissions: {name: string, active: boolean}[],
   active: boolean
 };
 
@@ -32,7 +32,8 @@ export class RolesComponent implements OnInit {
       login: 'ivan@gmail.com',
       pass: 'password',
       nom: '+77701010123',
-      permissions: [true, true, true, false, false, true],
+      permissions: [{name: 'user_red', active: true}, {name: 'znaki_qr', active: true}, {name: 'znaki_qr_edit', active: true},
+        {name: 'znaki_qr_delete', active: true}, {name: 'znaki_fe', active: true}, {name: 'znaki_ae', active: true}],
       active: true},
     {  firstname: 'Иван',
       middlename: 'Иван',
@@ -41,7 +42,8 @@ export class RolesComponent implements OnInit {
       login: 'ivan@gmail.com',
       pass: 'password',
       nom: '+77701010123',
-      permissions: [true, true, true, false, false, true],
+      permissions: [{name: 'user_red', active: true}, {name: 'znaki_qr', active: true}, {name: 'znaki_qr_edit', active: true},
+        {name: 'znaki_qr_delete', active: true}, {name: 'znaki_fe', active: true}, {name: 'znaki_ae', active: true}],
       active: true},
     {  firstname: 'Иван',
       middlename: 'Иван',
@@ -50,7 +52,8 @@ export class RolesComponent implements OnInit {
       login: 'ivan@gmail.com',
       pass: 'password',
       nom: '+77701010123',
-      permissions: [true, true, true, false, false, true],
+      permissions: [{name: 'user_red', active: true}, {name: 'znaki_qr', active: true}, {name: 'znaki_qr_edit', active: true},
+        {name: 'znaki_qr_delete', active: true}, {name: 'znaki_fe', active: true}, {name: 'znaki_ae', active: true}],
       active: true},
     {  firstname: 'Иван',
       middlename: 'Иван',
@@ -59,7 +62,8 @@ export class RolesComponent implements OnInit {
       login: 'ivan@gmail.com',
       pass: 'password',
       nom: '+77701010123',
-      permissions: [true, true, true, false, false, true],
+      permissions: [{name: 'user_red', active: true}, {name: 'znaki_qr', active: true}, {name: 'znaki_qr_edit', active: true},
+        {name: 'znaki_qr_delete', active: true}, {name: 'znaki_fe', active: true}, {name: 'znaki_ae', active: true}],
       active: true},
     {  firstname: 'Иван',
       middlename: 'Иван',
@@ -68,7 +72,8 @@ export class RolesComponent implements OnInit {
       login: 'ivan@gmail.com',
       pass: 'password',
       nom: '+77701010123',
-      permissions: [true, true, true, false, false, true],
+      permissions: [{name: 'user_red', active: true}, {name: 'znaki_qr', active: true}, {name: 'znaki_qr_edit', active: true},
+        {name: 'znaki_qr_delete', active: true}, {name: 'znaki_fe', active: true}, {name: 'znaki_ae', active: true}],
       active: true},
     {  firstname: 'Иван',
       middlename: 'Иван',
@@ -77,7 +82,8 @@ export class RolesComponent implements OnInit {
       login: 'ivan@gmail.com',
       pass: 'password',
       nom: '+77701010123',
-      permissions: [true, true, true, false, false, true],
+      permissions: [{name: 'user_red', active: true}, {name: 'znaki_qr', active: true}, {name: 'znaki_qr_edit', active: true},
+        {name: 'znaki_qr_delete', active: true}, {name: 'znaki_fe', active: true}, {name: 'znaki_ae', active: true}],
       active: true},
     {  firstname: 'Иван',
       middlename: 'Иван',
@@ -86,12 +92,14 @@ export class RolesComponent implements OnInit {
       login: 'ivan@gmail.com',
       pass: 'password',
       nom: '+77701010123',
-      permissions: [true, true, true, false, false, true],
+      permissions: [{name: 'user_red', active: true}, {name: 'znaki_qr', active: true}, {name: 'znaki_qr_edit', active: true},
+        {name: 'znaki_qr_delete', active: true}, {name: 'znaki_fe', active: true}, {name: 'znaki_ae', active: true}],
       active: true},
 
   ];
 
   displayedRoles: Role[];
+  expand = false;
   constructor(private infoService: InfoService) {
     this.displayedRoles = this.roles;
   }

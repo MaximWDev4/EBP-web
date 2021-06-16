@@ -1,12 +1,18 @@
 <div class="record" [ngClass]="{'visited': visited, 'deleted': deleted}" *ngIf="!expand">
   <div class="name col-3"><span  [innerHTML]="highlight()"></span></div>
-  <div class="role col-2 text-left"><div class="btn btn-dark w-100">{{item.roleName}}</div></div>
+<!--  <div class="role col-2 text-left"><div class="btn btn-dark w-100">{{item.roleName}}</div></div>-->
   <div class="permissions col-5 text-right">
-    <app-select-dropdown class="perm-dropdown" (closeDropdown)="showDropdown = false" *ngIf="showDropdown"></app-select-dropdown>
+    <app-select-dropdown
+      class="perm-dropdown"
+      [permissions]="form.get('permissions')?.value"
+      (closeDropdown)="form.get('permissions')?.setValue($event); showDropdown = false"
+      *ngIf="showDropdown && form.get('permissions')">
+    </app-select-dropdown>
     <div class="btn btn-dark" (click)="showDropdown = !showDropdown">Права доступа</div>
   </div>
   <div class="actions">
     <a class="edit pl-1 pr-1" (click)="edit()"><app-edit [color]="'#4c5b72'" style="width: 20px; height: 20px"></app-edit></a>
+    <a class="delete pl-1 pr-1" (click)="save()"><app-checkmark [color]="form.valid ? 'green' : 'gray'" *ngIf="form.touched || form.dirty"></app-checkmark></a>
     <a class="delete pl-1 pr-1" (click)="deleted = true"><app-delete [color]="'red'"></app-delete></a>
   </div>
 </div>
@@ -18,17 +24,22 @@
       <input type="text" class="form-control" formControlName="surname">
 
     </div>
-    <div class="role col-2 text-left"><div class="btn btn-dark w-100">{{item.roleName}}</div></div>
-
+<!--    <div class="role col-2 text-left"><div class="btn btn-dark w-100">{{item.roleName}}</div></div>-->
     <div class="permissions col-5 text-right">
-      <app-select-dropdown class="perm-dropdown" (closeDropdown)="showDropdown = false" *ngIf="showDropdown"></app-select-dropdown>
+      <app-select-dropdown
+        class="perm-dropdown"
+        [permissions]="form.get('permissions')?.value"
+        (closeDropdown)="form.get('permissions')?.setValue($event);  showDropdown = false"
+        [enabled]="true"
+        *ngIf="showDropdown">
+      </app-select-dropdown>
       <div class="btn btn-dark" (click)="showDropdown = !showDropdown">
         Права доступа
       </div>
     </div>
     <div class="actions">
       <a class="edit pl-1 pr-1" (click)="edit()"><app-edit [color]="'#4c5b72'" style="width: 20px; height: 20px"></app-edit></a>
-      <a class="delete pl-1 pr-1" (click)="save()"><app-checkmark [color]="'green'"></app-checkmark></a>
+      <a class="delete pl-1 pr-1" (click)="save()"><app-checkmark [color]="form.valid ? 'green' : 'gray'" *ngIf="form.touched || form.dirty"></app-checkmark></a>
       <a class="delete pl-1 pr-1" (click)="deleted = true"><app-delete [color]="'red'"></app-delete></a>
     </div>
   </div>

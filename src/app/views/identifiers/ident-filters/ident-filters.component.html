@@ -1,68 +1,56 @@
 <div [formGroup]="filtersForm" class="row w-100 align-items-end justify-content-end">
-  <div class="form-group align-items-end d-flex col-md-2">
-    <label for="idType" class="form-label">
-<!--      Тип-->
-    </label>
+  <div class="form-group align-items-end d-flex col-md-2 m-2">
     <select id="idType" formControlName="idType" class="form-control custom-select"
-            [ngClass]="{ 'is-invalid': isInvalid('idType') }">
+            >
       <option value="Approved">Проверенные</option>
       <option value="Maintaining">Не установленно</option>
     </select>
   </div>
 
-  <div class="form-group col-md-2">
-    <label for="from" class="form-label">
-<!--      Дата От-->
-    </label>
-
-    <input #dpFrom
-           formControlName="dateFrom"
-           ngbDatepicker #FromDatepicker="ngbDatepicker"
-           class="form-control"
-           readonly
-           type="date"
-           id="from"
-           (click)="FromDatepicker.toggle()"
-           placeholder=""
-           [autoClose]="'outside'"
-           [displayMonths]="1"
-           [startDate]="maxDateFrom"
-           [minDate]="minDateFrom"
-           [maxDate]="maxDateFrom"
-           outsideDays="hidden"
-           (dateSelect)="onDateSelection($event, FromDatepicker, 'dateFrom')"
-           [ngClass]="{ 'is-invalid': isInvalid('dateFrom') }"
-    />
-<!--    <div *ngIf="isInvalid('dob')" class="invalid-feedback">-->
-<!--      <div *ngIf="getErrors('dob').required">Укажите дату рождения</div>-->
-<!--    </div>-->
+  <div class="form-group hidden">
+    <div class="input-group">
+      <input name="datepicker"
+             class="hidden"
+             ngbDatepicker
+             #datepicker="ngbDatepicker"
+             [autoClose]="'outside'"
+             (dateSelect)="onDateSelection($event)"
+             [displayMonths]="2"
+             [dayTemplate]="t"
+             outsideDays="hidden"
+             [startDate]="fromDate!"
+             tabindex="-1">
+      <ng-template #t let-date let-focused="focused">
+          <span class="custom-day"
+                [class.focused]="focused"
+                [class.range]="isRange(date)"
+                [class.faded]="isHovered(date) || isInside(date)"
+                (mouseenter)="hoveredDate = date"
+                (mouseleave)="hoveredDate = null">
+            {{ date.day }}
+          </span>
+      </ng-template>
+    </div>
   </div>
-  <div class="form-group col-md-2">
-    <label for="to" class="form-label">
-<!--      Дата До-->
-    </label>
-
-    <input #dpTo
-           formControlName="dateTo"
-           ngbDatepicker #ToDatepicker="ngbDatepicker"
-           class="form-control"
-           readonly
-           type="date"
-           id="to"
-           (click)="ToDatepicker.toggle()"
-           placeholder=""
-           [autoClose]="'outside'"
-           [displayMonths]="1"
-           [startDate]="maxDateTo"
-           [minDate]="minDateTo"
-           [maxDate]="maxDateTo"
-           outsideDays="hidden"
-           (dateSelect)="onDateSelection($event, ToDatepicker, 'dateTo')"
-           [ngClass]="{ 'is-invalid': isInvalid('dateTo') }"
-    />
-    <!--    <div *ngIf="isInvalid('dob')" class="invalid-feedback">-->
-    <!--      <div *ngIf="getErrors('dob').required">Укажите дату рождения</div>-->
-    <!--    </div>-->
+  <div class="form-group m-2">
+    <div class="input-group">
+      <input #dpFromDate
+             class="form-control" placeholder="yyyy-mm-dd"
+             name="dpFromDate"
+             (click)="datepicker.toggle()"
+             [value]="fromDate ? dateFormatter.format(fromDate): 'Дата от'"
+             (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+    </div>
   </div>
-  <button class="submit col-2 mb-3 btn" (click)="submit()">Фильтрация</button>
+  <div class="form-group m-2">
+    <div class="input-group">
+      <input #dpToDate
+             class="form-control" placeholder="yyyy-mm-dd"
+             name="dpToDate"
+             (click)="datepicker.toggle()"
+             [value]="toDate ? dateFormatter.format(toDate): 'Дата до'"
+             (input)="toDate = validateInput(toDate, dpToDate.value)">
+    </div>
+  </div>
+  <button class="submit col-2 m-2 btn" (click)="submit()">Фильтрация</button>
 </div>

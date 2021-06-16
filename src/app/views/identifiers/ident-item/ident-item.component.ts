@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IDRecord} from '../identifiers.component';
 import {FormControl, FormGroup} from '@angular/forms';
+import {NgbDateRuParserFormatter} from '../../../_helpers/ngb-date-ru-parser-formatter';
+import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-ident-item',
@@ -13,7 +15,7 @@ export class IdentItemComponent implements OnInit {
   expand = false;
   visited = false;
   deleted = false;
-  constructor() {
+  constructor(private parser: NgbDateRuParserFormatter) {
     this.form = new FormGroup({
       gostNom: new FormControl(this.item?.gostNom),
       position: new FormControl(this.item?.gostNom),
@@ -50,5 +52,11 @@ export class IdentItemComponent implements OnInit {
       this.expand = !this.expand;
       this.visited = true;
     }
+  }
+
+  getDateStr(date: number | string): string {
+    const dateF: Date = new Date(date);
+    const ngbDate: NgbDate = new NgbDate(dateF.getFullYear(), dateF.getMonth(), dateF.getDate());
+    return this.parser.format(ngbDate) + ' ' + dateF.getHours() + ':' + dateF.getMinutes();
   }
 }

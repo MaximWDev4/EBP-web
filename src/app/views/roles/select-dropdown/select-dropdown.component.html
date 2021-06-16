@@ -1,8 +1,11 @@
 <div class="dcontainer text-left">
     <div *ngFor="let p of permissions" style="width: 160px">
-      <input type="checkbox" id="{{p}}" class="mat-checkbox m-1"
+      <input type="checkbox" id="{{p.name}}" class="mat-checkbox m-1"
              style="height: 20px; width: 20px;"
-             value="{{p}}" (submit)="selectPermission.emit(p)">
-      <label class="m-1" for="{{p}}">{{p}}</label>
+             (change)="p.active = !p.active;"
+             [checked]="p.active"
+             [disabled]="!enabled"
+             value="{{p.name}}">
+      <label class="m-1" for="{{p.name}}">{{p.name}}</label>
     </div>
 </div>

@@ -2,8 +2,9 @@
 <div class="w-100 wrapper sheet">
 <!--  table-->
   <div class="w-100">
-    <app-ident-item  class="border-top" [item]="colNames"></app-ident-item>
-    <app-ident-item class="border-top" [item]="n" *ngFor="let n of ids | paginate: {itemsPerPage: itemsPerPage, currentPage: p}"></app-ident-item>
+    <app-ident-item  class="border-top " [item]="colNames"></app-ident-item>
+    <div class="border-top no-results text-center p-4" *ngIf="drawbleIds.length<1">Ничего не найдено</div>
+    <app-ident-item class="border-top" [item]="n" *ngFor="let n of drawbleIds | paginate: {itemsPerPage: itemsPerPage, currentPage: p}"></app-ident-item>
   </div>
 <!--  /table-->
 <!--  pagination-controls-wrapper -->

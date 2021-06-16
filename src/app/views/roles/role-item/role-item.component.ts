@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-
+import {EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-role-item',
   templateUrl: './role-item.component.html',
@@ -9,6 +9,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class RoleItemComponent implements OnInit {
   @Input() item: any;
   @Input() query?: string;
+  @Output() confirmEdit = new EventEmitter();
   expand = false;
   visited = false;
   deleted = false;
@@ -54,5 +55,7 @@ export class RoleItemComponent implements OnInit {
 
   save(): void {
       this.expand = false;
+      console.log(this.form.value);
+      this.confirmEdit.emit(this.form.value);
   }
 }
