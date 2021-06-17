@@ -9,6 +9,8 @@ import { IdentFiltersComponent } from './ident-filters/ident-filters.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,16 @@ import {NgxPaginationModule} from 'ngx-pagination';
     IdentItemComponent,
     IdentFiltersComponent,
   ],
-  imports: [
-    IdentifiersRoutingModule,
-    MatSelectModule,
-    CommonModule,
-    SvgModule,
-    ReactiveFormsModule,
-    NgbDatepickerModule,
-    NgxPaginationModule
-  ],
+    imports: [
+        IdentifiersRoutingModule,
+        MatSelectModule,
+        CommonModule,
+        SvgModule,
+        ReactiveFormsModule,
+        NgbDatepickerModule,
+        NgxPaginationModule,
+        MatTooltipModule,
+        MatDialogModule
+    ],
 })
 export class IdentifiersModule { }

@@ -1,35 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {IDRecord} from '../identifiers.component';
 import {FormControl, FormGroup} from '@angular/forms';
 import {NgbDateRuParserFormatter} from '../../../_helpers/ngb-date-ru-parser-formatter';
 import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
+import {EventEmitter} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {YesnoDialogComponent} from '../../../_helpers/yesno.dialog.component';
 
 @Component({
   selector: 'app-ident-item',
   templateUrl: './ident-item.component.html',
-  styleUrls: ['./ident-item.component.sass']
+  styleUrls: ['./ident-item.component.sass'],
 })
 export class IdentItemComponent implements OnInit {
-  form: FormGroup;
   @Input() item?: IDRecord;
+  @Output() saveChanges = new EventEmitter();
+  @Output() deleteRow = new EventEmitter();
+  // @ts-ignore
+  form: FormGroup;
   expand = false;
   visited = false;
   deleted = false;
-  constructor(private parser: NgbDateRuParserFormatter) {
-    this.form = new FormGroup({
-      gostNom: new FormControl(this.item?.gostNom),
-      position: new FormControl(this.item?.gostNom),
-      mainStr: new FormControl(this.item?.gostNom),
-      crossStr: new FormControl(this.item?.gostNom),
-      standardSize: new FormControl(this.item?.gostNom),
-      bracing: new FormControl(this.item?.gostNom),
-      skin: new FormControl(this.item?.gostNom),
-      performerID: new FormControl(this.item?.gostNom),
-      qrCode: new FormControl(this.item?.gostNom),
-      workType: new FormControl(this.item?.gostNom),
-      date: new FormControl(this.item?.gostNom),
-    });
-  }
+  constructor(private parser: NgbDateRuParserFormatter,
+              public dialog: MatDialog) {  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -44,6 +37,7 @@ export class IdentItemComponent implements OnInit {
       qrCode: new FormControl(this.item?.qrCode),
       workType: new FormControl(this.item?.workType),
       date: new FormControl(this.item?.date),
+      objectGroup: new FormControl('1')
     });
   }
 
@@ -58,5 +52,28 @@ export class IdentItemComponent implements OnInit {
     const dateF: Date = new Date(date);
     const ngbDate: NgbDate = new NgbDate(dateF.getFullYear(), dateF.getMonth(), dateF.getDate());
     return this.parser.format(ngbDate) + ' ' + dateF.getHours() + ':' + dateF.getMinutes();
+  }
+
+  save(v: any): void {
+    console.log('saved');
+    this.saveChanges.emit(v);
+  }
+
+  delete(): void {
+    this.deleteRow.emit(this.item?.qrCode);
+  }
+
+  ask(text: string, action: (v?: any) => void): void {
+    const dialogRef = this.dialog.open(YesnoDialogComponent, {
+      width: '250px',
+      data: {title: 'Внимание!', content: text}
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      console.log('The dialog was closed');
+      if (result) {
+        action.bind(this)(this.form.value);
+      }
+    });
   }
 }

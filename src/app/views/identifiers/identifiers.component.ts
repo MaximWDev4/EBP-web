@@ -9,8 +9,8 @@ function formatDateStr(date: string): string {
 export type IDRecord = {
   gostNom: string,
   position: number|string,
-  mainStr?: string,
-  crossStr?: string,
+  mainStr: string,
+  crossStr: string,
   standardSize?: string,
   bracing?: string,
   skin?: string,
@@ -27,7 +27,7 @@ export type IDRecord = {
   styleUrls: ['./identifiers.component.sass']
 })
 export class IdentifiersComponent implements OnInit {
-  public itemsPerPage = 15;
+  public itemsPerPage = 20;
   public p = 0; // current page
   colNames: IDRecord = {
     gostNom: '№ Госта',
@@ -402,5 +402,10 @@ export class IdentifiersComponent implements OnInit {
   PaginationEvent(e: number): void {
     window.scroll(0, 0);
     this.p = e;
+  }
+
+  saveOne(i: number, $e: any): void {
+    console.log(i, $e);
+    this.ids[i] = $e;
   }
 }

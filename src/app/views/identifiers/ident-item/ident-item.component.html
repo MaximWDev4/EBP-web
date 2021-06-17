@@ -1,24 +1,51 @@
 <div class="record"
      [ngClass]="{'visited': visited, 'deleted': deleted, 'head': item.firstRow}" *ngIf="!!item && !expand">
   <div class="gostNom col-0.5 text-left">{{item.gostNom}}</div>
-  <div class="position col-0.5 text-left" >{{item.position}}</div>
-  <div class="mainStr col-1">{{item.mainStr}}</div>
-  <div class="crossStr col-1">{{item.crossStr}}</div>
+  <div class="position col-0.5 text-left">{{item.position}}</div>
+  <div class="mainStr col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.mainStr"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000">{{item.mainStr}}</div>
+  <div class="crossStr col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.crossStr"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000">{{item.crossStr}}</div>
   <div class="standardSize col-1">{{item.standardSize}}</div>
   <div class="bracing col-1">{{item.bracing}}</div>
   <div class="skin col-1">{{item.skin}}</div>
   <div class="performerID col-1 text-left">{{item.performerID}}</div>
-  <div class="qrCode col-1">{{item.qrCode}}</div>
+  <div class="qrCode col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.qrCode"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000">{{item.qrCode}}</div>
   <div class="workType col-1 text-left">{{item.workType}}</div>
   <div class="date col-1.5">{{!item.firstRow ? getDateStr(item.date) : item.date}}</div>
 
   <div class="actions col-1" *ngIf="!item.firstRow">
-    <a class="edit pl-1 pr-1" (click)="edit()"><app-edit [color]="'#4c5b72'" style="width: 20px; height: 20px"></app-edit></a>
-    <a class="delete pl-1 pr-1" (click)="deleted = true"><app-delete [color]="'red'"></app-delete></a>
+    <a class="edit pl-1 pr-1"
+       matTooltipClass="my-tooltip"
+       matTooltip="Редактировать"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="edit()">
+      <app-edit [color]="'#4c5b72'" style="width: 20px; height: 20px"></app-edit>
+    </a>
+    <a class="map pl-1 pr-1"
+       matTooltipClass="my-tooltip"
+       matTooltip="Показать на карте"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="$event">
+      <app-map [color]="'blue'"></app-map>
+    </a>
   </div>
   <div class="actions col-1" *ngIf="item.firstRow"> Действия </div>
 </div>
-<div class="record" [formGroup]="form" [ngClass]="{'visited': visited && !expand, 'deleted': deleted, 'head': item.firstRow}" *ngIf="!!item && expand">
+<div [formGroup]="form" [ngClass]="{'visited': visited && !expand, 'deleted': deleted, 'head': item.firstRow}" *ngIf="!!item && expand">
+  <div  class="record">
   <input class="gostNom col-0.5 text-left form-control" formControlName="gostNom">
   <input class="position col-0.5 text-left form-control" formControlName="position">
   <input class="mainStr col-1 form-control" formControlName="mainStr">
@@ -32,20 +59,65 @@
   <input class="date col-1.5 form-control" formControlName="date">
 
   <div class="actions col-1" *ngIf="!item.firstRow">
-    <a class="edit pl-1 pr-1" (click)="edit()"><app-edit [color]="'#4c5b72'" style="width: 20px; height: 20px"></app-edit></a>
-    <a class="delete pl-1 pr-1" (click)="deleted = true"><app-delete [color]="'red'"></app-delete></a>
+    <a class="edit pl-1 pr-1"
+       matTooltip="Прекратить редактирование"
+       matTooltipClass="my-tooltip"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="edit()">
+      <app-edit [color]="'#4c5b72'" style="width: 20px; height: 20px"></app-edit>
+    </a>
+    <a class="checkmark pl-1 pr-1"
+       matTooltip="Сохранить изменения"
+       matTooltipClass="my-tooltip"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="ask('Вы уверены, что хотите сохранить изменения?', save)">
+      <app-checkmark  [color]="'green'" *ngIf="form.touched && form.dirty"></app-checkmark>
+    </a>
+    <a class="delete pl-1 pr-1"
+       matTooltip="Удалить"
+       matTooltipClass="my-tooltip"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="ask('Вы уверены, что хотите сохранить изменения?', delete)">
+      <app-delete  [color]="'red'"></app-delete>
+    </a>
   </div>
   <div class="actions col-0.5" *ngIf="item.firstRow"> Действия </div>
 </div>
 <div class="edit-field expandable-v" [ngClass]="{'expand__500': expand}" *ngIf="!!item">
   <div class="form-group m-3" *ngIf="expand">
     <div class="row justify-content-around mb-1 mt-1">
-      <input type="text" class="form-control col-5" placeholder="Название">
-      <input type="text" class="form-control col-5" placeholder="Сокр. код">
+      <input type="text" class="form-control col-3" placeholder="Кем проверен">
+      <input type="text" class="form-control col-3" placeholder="Срок действия">
+      <select class="form-control col-3" [value]="1" formControlName="objectGroup">
+        <option value="1">Дорожные знаки</option>
+        <option value="2">Объекты</option>
+      </select>
     </div>
     <div class="row justify-content-around mb-1 mt-1">
-      <input type="text" class="form-control col-11" placeholder="Описание">
+      <input type="text" class="form-control col-3" placeholder="Позиция">
+      <select name="condition" id="c1" class="custom-select col-3">
+        <option value="">Состояние</option>
+        <option value=""></option>
+      </select>
+      <select name="" id="innom" class="custom-select col-3">
+      <option value="">Инвентарный номер</option>
+      <option value="">132</option>
+    </select>
+    </div>
+    <div class="row justify-content-around mb-1 mt-1">
+      <div class="col-3"></div>
+      <select name="" id="mods" class="custom-select col-3">
+        <option value="">Модиыикации</option>
+        <option value=""></option>
+      </select>
+      <select name="" id="distance" class="custom-select col-3">
+        <option value="">Дистанция от БТ</option>
+        <option value=""></option>
+      </select>
     </div>
   </div>
 </div>
-
+</div>

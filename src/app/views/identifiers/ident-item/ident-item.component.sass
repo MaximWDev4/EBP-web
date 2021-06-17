@@ -6,6 +6,7 @@
     text-align: left
     padding: 0 0 0 1rem
     font-size: .8rem
+    margin: auto 0
   &.head
     position: sticky
     top: 65px
@@ -16,4 +17,11 @@
   .performerID, .standardSize
     word-break: break-all
 .mainStr, .crossStr, .qrCode
+  white-space: nowrap
   overflow: hidden
+  text-overflow: ellipsis
+a
+  cursor: pointer
+
+::ng-deep .my-tooltip
+  font-size: 16px
