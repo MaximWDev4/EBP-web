@@ -11,6 +11,13 @@ import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {DirectivesModule} from '../../directives/directives.module';
+import {MatTabsModule} from '@angular/material/tabs';
+import {ChangeModalModule} from './change-modal/change-modal.module';
+import {ImageDNDModule} from './image-component/image.module';
+import {StaticDataService} from '../../_servieces/static-data.service';
 
 @NgModule({
   declarations: [
@@ -18,16 +25,20 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
     IdentItemComponent,
     IdentFiltersComponent,
   ],
-    imports: [
-        IdentifiersRoutingModule,
-        MatSelectModule,
-        CommonModule,
-        SvgModule,
-        ReactiveFormsModule,
-        NgbDatepickerModule,
-        NgxPaginationModule,
-        MatTooltipModule,
-        MatDialogModule
-    ],
+  imports: [
+    IdentifiersRoutingModule,
+    ChangeModalModule,
+    CommonModule,
+    SvgModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    NgxPaginationModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatButtonModule,
+    DirectivesModule,
+    MatInputModule,
+    MatTabsModule
+  ],
 })
 export class IdentifiersModule { }

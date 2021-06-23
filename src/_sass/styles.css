@@ -41,6 +41,9 @@ html, body {
 .grid-img {
   width: 60%;
   padding-top: 60%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .no-img {

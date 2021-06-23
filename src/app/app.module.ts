@@ -44,8 +44,6 @@ import {ToastModule} from './views/toast/toast.module';
     InfoService,
     SuccessService,
   ],
-  exports: [
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

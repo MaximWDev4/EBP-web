@@ -2,11 +2,11 @@
 <div class="w-100 wrapper sheet">
 <!--  table-->
   <div class="w-100">
-    <app-ident-item  class="border-top " [item]="colNames"></app-ident-item>
+    <app-ident-item  class="border-top " [item]="colNames" [firstRow]="true"></app-ident-item>
     <div class="border-top no-results text-center p-4" *ngIf="drawbleIds.length<1">Ничего не найдено</div>
     <app-ident-item
       class="border-top"
-      [item]="n" (saveChanges)="saveOne(i, $event)"
+      [item]="n" (editRow)="editModal(i)"
       *ngFor="let n of drawbleIds | paginate: {itemsPerPage: itemsPerPage, currentPage: p};
        let i = index">
     </app-ident-item>
@@ -18,3 +18,4 @@
   </div>
 <!--  /pagination-controls-wrapper -->
 </div>
+

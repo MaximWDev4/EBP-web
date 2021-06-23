@@ -1,0 +1,25 @@
+<p *ngIf="name">{{name}}</p>
+
+<div class="img-preview-container">
+  <div class="image no-img" *ngIf="!selectedFile && !initialImage"></div>
+  <div class="image {{selectedFile?.status === 'fail' ? '-error' : ''}}"
+       [ngStyle]="{'background-image':  'url('+  selectedFile?.src + ')'}"
+       *ngIf="selectedFile">
+  </div>
+  <div *ngIf="selectedFile?.pending" class="img-loading-overlay">
+    <div class="img-spinning-circle"></div>
+  </div>
+</div>
+
+
+<div class="dropzone" appDnd (fileDropped)="processFile($event)">
+  <input #imageInput
+         class="hidden"
+         type="file"
+         accept="image/*"
+         id="img-select{{name}}"
+         (change)="processFile(imageInput.files ? imageInput.files : null)">
+  <h2>Перетащите файл в эту область</h2>
+  <div>или</div>
+  <label for="img-select{{name}}" class="image-upload-container btn btn-info col-6"> Выберете Файл из файловой системы </label>
+</div>

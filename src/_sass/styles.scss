@@ -40,10 +40,13 @@ html, body { height: 100%; }
 .grid-img {
   width: 60%;
   padding-top: 60%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .no-img {
-  background-image: url("../assets/corrupted_image.png");
+  background-image:  url("../assets/corrupted_image.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

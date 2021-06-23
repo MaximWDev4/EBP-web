@@ -1,25 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {ChangeModalComponent} from './change-modal/change-modal.component';
+import {IIdentifier} from './interfaces/identifiers';
 
-function formatDateStr(date: string): string {
-  // console.log(date);
-  // date = date.replace(/\./g, '-');
-  return date.replace(' ', 'T');
+function formatDateStr(manDate: string): string {
+  // console.log(manDate);
+  // manDate = manDate.replace(/\./g, '-');
+  return manDate.replace(' ', 'T');
 }
-
-export type IDRecord = {
-  gostNom: string,
-  position: number|string,
-  mainStr: string,
-  crossStr: string,
-  standardSize?: string,
-  bracing?: string,
-  skin?: string,
-  performerID: number|string,
-  qrCode: string,
-  workType: number|string,
-  date: number | string,
-  firstRow: boolean,
-};
 
 @Component({
   selector: 'app-identifiers',
@@ -29,7 +17,7 @@ export type IDRecord = {
 export class IdentifiersComponent implements OnInit {
   public itemsPerPage = 20;
   public p = 0; // current page
-  colNames: IDRecord = {
+  colNames = {
     gostNom: '№ Госта',
     position: 'Позиция',
     mainStr: 'Основная улица',
@@ -40,26 +28,24 @@ export class IdentifiersComponent implements OnInit {
     performerID: 'Исполнитель',
     qrCode: 'QR код',
     workType: 'Вид работ',
-    date: 'Дата',
-    firstRow: true,
+    manDate: 'Дата',
   };
-  ids: IDRecord[];
-  public drawbleIds: IDRecord[] = [];
-  constructor() {
+  ids: IIdentifier[];
+  public drawbleIds: IIdentifier[] = [];
+  constructor(public dialog: MatDialog) {
     this.ids = [
       {
-        gostNom: '1.1',
+        gostNom: '2.1',
         position: 1,
-        mainStr: 'Ysyriska',
-        crossStr: 'Ysyriyska',
-        standardSize: 'Типоразмер ||',
-        bracing: '',
-        skin: '',
-        performerID: 94,
-        qrCode: 'QR SMEU14565411565',
-        workType: 100,
-        date: 1623829495000,
-        firstRow: false,
+        mainStr: 'frggrgr',
+        crossStr: '4bdfbdr',
+        standardSize: '3',
+        bracing: '904',
+        skin: '604',
+        performerID: 19,
+        qrCode: 'QR 2222222',
+        workType: 60,
+        manDate: 1625767200000,
       },
       {
         gostNom: '2.1',
@@ -72,22 +58,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1625767200000,
-        firstRow: false,
+        manDate: 1625767200000,
       },
       {
         gostNom: '2.1',
@@ -100,288 +71,7 @@ export class IdentifiersComponent implements OnInit {
         performerID: 19,
         qrCode: 'QR 2222222',
         workType: 60,
-        date: 1623829495000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1623829495000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1623829495000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'Ysyriska',
-        crossStr: 'Ysyriyska',
-        standardSize: 'Типоразмер ||',
-        bracing: '',
-        skin: '',
-        performerID: 94,
-        qrCode: 'QR SMEU14565411565',
-        workType: 100,
-        date: 1623829495000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'Ysyriska',
-        crossStr: 'Ysyriyska',
-        standardSize: 'Типоразмер ||',
-        bracing: '',
-        skin: '',
-        performerID: 94,
-        qrCode: 'QR SMEU14565411565',
-        workType: 100,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'Ysyriska',
-        crossStr: 'Ysyriyska',
-        standardSize: 'Типоразмер ||',
-        bracing: '',
-        skin: '',
-        performerID: 94,
-        qrCode: 'QR SMEU14565411565',
-        workType: 100,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '1.1',
-        position: 1,
-        mainStr: 'f',
-        crossStr: '1',
-        standardSize: '1',
-        bracing: '1',
-        skin: '0',
-        performerID: 100,
-        qrCode: 'QR 2222222',
-        workType: 10,
-        date: 1625767200000,
-        firstRow: false,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        date: 1625767200000,
-        firstRow: false,
+        manDate: 1625767200000,
       },
     ];
     this.drawbleIds = this.ids;
@@ -392,7 +82,7 @@ export class IdentifiersComponent implements OnInit {
 
   filter(f: {fromDate: number, toDate: number}): void {
     this.drawbleIds = this.ids.filter((id) =>
-      (id.date > f.fromDate && id.date < f.toDate));
+      (id.manDate > f.fromDate && id.manDate < f.toDate));
   }
 
   get pageCount(): number {
@@ -404,8 +94,35 @@ export class IdentifiersComponent implements OnInit {
     this.p = e;
   }
 
-  saveOne(i: number, $e: any): void {
-    console.log(i, $e);
-    this.ids[i] = $e;
+  saveOne(data: IIdentifier): void {
+    console.log(data);
+    this.ids[this.ids.findIndex((item: IIdentifier) => item.qrCode === data.qrCode)] = data;
+  }
+
+  delete(id: number|string): void{
+    console.log(this.ids.findIndex((item: IIdentifier) => item.qrCode === id));
+    this.ids.splice(this.ids.findIndex((item: IIdentifier) => item.qrCode === id), 1);
+    this.drawbleIds = this.ids;
+  }
+
+  editModal(i: number): void {
+    const item = this.drawbleIds[i];
+    const dialogRef = this.dialog.open(ChangeModalComponent, {
+      width: '60vw',
+      data: {title: 'Редактировать', content: item}
+    });
+    dialogRef.afterClosed().subscribe((
+      result:
+        { delete: true; edit: false; id: number } |
+        {edit: true; delete: false; item: IIdentifier } |
+        {delete: false; edit: false; }) => {
+      console.log('The dialog was closed');
+      if (result.delete) {
+        this.delete(result.id);
+        console.log(result.id);
+      } else if (result.edit) {
+        this.saveOne(result.item);
+      }
+    });
   }
 }

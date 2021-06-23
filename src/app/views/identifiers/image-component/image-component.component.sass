@@ -1,0 +1,30 @@
+.hidden
+  height: 0
+  width: 0
+  padding: 0
+  margin: 0
+  position: absolute
+.no-img
+  background-image:  url("../../../../assets/corrupted_image.png")
+  background-size: contain
+  background-repeat: no-repeat
+  background-position: center
+  margin: 0 auto
+.dropzone
+  position: relative
+  background-color: #C4C4C450
+  width: 100%
+  padding-top: 60%
+  margin: -60% auto auto
+  opacity: 0
+  text-align: center
+  border: dashed gray 2px
+  transition: opacity .5s ease-out
+  &:hover, &.fileover
+    opacity: 1
+.image
+  padding-top: 60%
+  background-size: contain
+  background-repeat: no-repeat
+  background-position: center
+

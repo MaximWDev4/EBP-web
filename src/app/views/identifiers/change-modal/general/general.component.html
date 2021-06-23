@@ -1,0 +1,26 @@
+<div  class="row justify-content-around" [formGroup]="form">
+  <mat-form-field class="col-5">
+    <mat-label>Основная улица</mat-label>
+    <input matInput  class="mainStr" formControlName="mainStr">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Кем исполнен</mat-label>
+    <input matInput formControlName="worker" type="text" class="worker">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Пересекающая улица</mat-label>
+    <input matInput  class="crossStr" formControlName="crossStr">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Кем проверен</mat-label>
+    <input matInput  formControlName="checker" type="text" class="checker">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Группа объекта</mat-label>
+    <mat-select class="og" [value]="1" formControlName="objectGroup">
+      <mat-option value="1">Дорожные знаки</mat-option>
+      <mat-option value="2">Объекты</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="col-5"></div>
+</div>

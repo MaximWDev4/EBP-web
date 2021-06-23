@@ -1,0 +1,145 @@
+<div class="row justify-content-around pt-3 m-auto" [formGroup]="form">
+  <mat-form-field class="col-5">
+    <mat-label>QR код</mat-label>
+    <input matInput  class="qrCode" formControlName="qrCode">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>№ДЗ по гост</mat-label>
+    <input matInput class="gostNom" formControlName="gostNom">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Состояние</mat-label>
+    <input #input
+           type="text"
+           placeholder="Состояние"
+           aria-label="condition"
+           matInput
+           formControlName="condition"
+           [contentEditable]="false"
+           [matAutocomplete]="auto">
+    <app-delete
+      *ngIf="input.value.length > 0"
+      style="position: absolute; margin-left: -20px"
+      color="gray"
+      (click)="input.value = ''; form.controls.condition.setValue('')">
+    </app-delete>
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" id="c1" class="c1">
+      <mat-option value="">Состояние</mat-option>
+      <mat-option
+        [value]="option.id"
+        (onSelectionChange)="onCondChange($event)"
+        *ngFor="let option of gostOptStream | async"
+        [innerHTML]="highlight(
+            input.value, option.number.toString())
+             + ' | ' + highlight( input.value, option.name)">
+        </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="form.controls.condition.errors"> Это обязательное поле </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Выбрать</mat-label>
+    <mat-select formControlName="select" id="select" class="selct">
+      <mat-option value="">Выбрать</mat-option>
+      <mat-option value=""></mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Материал основы</mat-label>
+    <mat-select formControlName="foundation" id="foundation" class="foundation">
+      <mat-option value="">Основа 1</mat-option>
+      <mat-option value="">Основа 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Тип крепления</mat-label>
+    <mat-select class="bracing" formControlName="bracing">
+      <mat-option value="">Крепление 1</mat-option>
+      <mat-option value="">крепление 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Способ изготовления</mat-label>
+    <mat-select class="mantype" formControlName="mantype">
+      <mat-option value="">Спопоб 1</mat-option>
+      <mat-option value="">Способ 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Тип пленки</mat-label>
+    <mat-select class="skin" formControlName="skin">
+      <mat-option value="">Тип 1</mat-option>
+      <mat-option value="">Тип 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Тип конфигурации</mat-label>
+    <mat-select class="config" formControlName="config">
+      <mat-option value="">Тип 1</mat-option>
+      <mat-option value="">Тип 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Типоразмер</mat-label>
+    <mat-select class="standardSize" formControlName="standardSize">
+      <mat-option value="">Типоразмер 1</mat-option>
+      <mat-option value="">Типоразмер 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Срок действия</mat-label>
+    <mat-select formControlName="standardSize" class="expiration">
+      <mat-option value="">Срок 1</mat-option>
+      <mat-option value="">Срок 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Позиция</mat-label>
+    <input matInput  class="position" formControlName="position">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Номер рабочего</mat-label>
+    <input matInput  class="performerID" formControlName="performerID">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Тип работ</mat-label>
+    <input matInput  class="workType" formControlName="workType">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Дата</mat-label>
+    <input matInput  class="date" formControlName="date">
+  </mat-form-field>
+
+  <mat-form-field class="col-5">
+    <mat-label>Позиция</mat-label>
+    <input matInput  type="text" class="pos" placeholder="Позиция">
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Инвентарный номер</mat-label>
+    <mat-select formControlName="innom" id="innom" class="innom">
+      <mat-option value="">Инвентарный номер</mat-option>
+      <mat-option value="">132</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Модификации</mat-label>
+    <mat-select id="mods" class="mods" formControlName="mods">
+      <mat-option value="">Модификации</mat-option>
+      <mat-option value=""></mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Дистанция от БТ</mat-label>
+    <mat-select formControlName="distance" id="distance" class="distance">
+      <mat-option value="">Дистанция от БТ</mat-option>
+      <mat-option value=""></mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-5">
+    <mat-label>Описание</mat-label>
+    <textarea matInput
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+</div>
