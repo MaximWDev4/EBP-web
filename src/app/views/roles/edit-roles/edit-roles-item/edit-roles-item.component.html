@@ -1,0 +1,32 @@
+<div class="record row text-center"
+     [ngClass]="{'head': firstRow}" *ngIf="!!item && !editing">
+  <div class="actions col-0.5" *ngIf="firstRow"> Действия </div>
+  <div class="actions col-0.3 text-center" *ngIf="!firstRow">
+    <app-edit [matTooltip]="'Редактировать'"
+              matTooltipShowDelay="100"
+              matTooltipHideDelay="100" (click)="editing = !editing"></app-edit>
+  </div>
+  <div class="col-0.3" *ngFor="let prop of toArr(item)">
+    <app-checkmark
+                    *ngIf="!isStr(prop.value) && prop.value">
+    </app-checkmark>
+    <app-delete
+                *ngIf="!isStr(prop.value) && !prop.value" color="red">
+    </app-delete>
+    <span *ngIf="isStr(prop.value)"> {{prop.value.toString()}} </span>
+  </div>
+</div>
+<div *ngIf="!!form && editing" class="record row" [formGroup]="form">
+  <div class="actions col-0.5 text-center">
+  <app-edit [matTooltip]="'Редактировать'"
+             matTooltipShowDelay="100"
+             matTooltipHideDelay="100" (click)="editing = !editing"></app-edit>
+    <app-checkmark [matTooltip]="'Сохранить'"
+    matTooltipShowDelay="100"
+    matTooltipHideDelay="100" (click)="editing = !editing; editRow.emit(form.value)" *ngIf="form.touched || form.dirty && form.valid"></app-checkmark>
+  </div>
+  <div class="text-center col-0.3 p-2" *ngFor="let prop of itarableForm">
+    <input type="text" class="form-control" formControlName="{{prop[0]}}" *ngIf="isStr(prop[1].value)">
+    <mat-slide-toggle class="custom-checkbox" color="primary" [checked]="prop[1].value" formControlName="{{prop[0]}}" *ngIf="!isStr(prop[1].value)"></mat-slide-toggle>
+  </div>
+</div>

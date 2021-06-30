@@ -18,6 +18,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {ChangeModalModule} from './change-modal/change-modal.module';
 import {ImageDNDModule} from './image-component/image.module';
 import {StaticDataService} from '../../_servieces/static-data.service';
+import {DynamicDataService} from '../../_servieces/dynamic-data.service';
 
 @NgModule({
   declarations: [
@@ -40,5 +41,6 @@ import {StaticDataService} from '../../_servieces/static-data.service';
     MatInputModule,
     MatTabsModule
   ],
+  providers: [DynamicDataService]
 })
 export class IdentifiersModule { }

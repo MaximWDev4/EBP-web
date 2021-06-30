@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {ChangeModalComponent} from './change-modal/change-modal.component';
 import {IIdentifier} from './interfaces/identifiers';
+import {DynamicDataService} from '../../_servieces/dynamic-data.service';
 
 function formatDateStr(manDate: string): string {
   // console.log(manDate);
@@ -18,71 +19,32 @@ export class IdentifiersComponent implements OnInit {
   public itemsPerPage = 20;
   public p = 0; // current page
   colNames = {
-    gostNom: '№ Госта',
+    id: 'ID',
+    gost_id: '№ Госта',
     position: 'Позиция',
-    mainStr: 'Основная улица',
-    crossStr: 'Пересек. улица',
-    standardSize: 'Типоразмер',
-    bracing: 'Тип крепления',
-    skin: 'Тип пленки',
-    performerID: 'Исполнитель',
-    qrCode: 'QR код',
-    workType: 'Вид работ',
-    manDate: 'Дата',
+    street: 'Основная улица',
+    street_dop: 'Пересек. улица',
+    tiporaz_id: 'Типоразмер',
+    tip_kr_id: 'Тип крепления',
+    type_pl_id: 'Тип пленки',
+    creator: 'Исполнитель',
+    qrcode: 'QR код',
+    dt_action_created: 'Дата',
   };
   ids: IIdentifier[];
   public drawbleIds: IIdentifier[] = [];
-  constructor(public dialog: MatDialog) {
-    this.ids = [
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        manDate: 1625767200000,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        manDate: 1625767200000,
-      },
-      {
-        gostNom: '2.1',
-        position: 1,
-        mainStr: 'frggrgr',
-        crossStr: '4bdfbdr',
-        standardSize: '3',
-        bracing: '904',
-        skin: '604',
-        performerID: 19,
-        qrCode: 'QR 2222222',
-        workType: 60,
-        manDate: 1625767200000,
-      },
-    ];
-    this.drawbleIds = this.ids;
+  constructor(public dialog: MatDialog, private dds: DynamicDataService) {
+    this.ids = [];
+    this.drawbleIds = [];
   }
 
   ngOnInit(): void {
+    this.dds.getPassports().subscribe((data: any) => this.ids = data, error => {}, () => {this.drawbleIds = this.ids; });
   }
 
   filter(f: {fromDate: number, toDate: number}): void {
     this.drawbleIds = this.ids.filter((id) =>
-      (id.manDate > f.fromDate && id.manDate < f.toDate));
+      (id.dt_action_created > f.fromDate && id.dt_action_created < f.toDate));
   }
 
   get pageCount(): number {
@@ -95,13 +57,12 @@ export class IdentifiersComponent implements OnInit {
   }
 
   saveOne(data: IIdentifier): void {
-    console.log(data);
-    this.ids[this.ids.findIndex((item: IIdentifier) => item.qrCode === data.qrCode)] = data;
+    this.ids[this.ids.findIndex((item: IIdentifier) => item.id === data.id)] = data;
   }
 
   delete(id: number|string): void{
-    console.log(this.ids.findIndex((item: IIdentifier) => item.qrCode === id));
-    this.ids.splice(this.ids.findIndex((item: IIdentifier) => item.qrCode === id), 1);
+    console.log(this.ids.findIndex((item: IIdentifier) => item.id === id));
+    this.ids.splice(this.ids.findIndex((item: IIdentifier) => item.id === id), 1);
     this.drawbleIds = this.ids;
   }
 
@@ -116,12 +77,13 @@ export class IdentifiersComponent implements OnInit {
         { delete: true; edit: false; id: number } |
         {edit: true; delete: false; item: IIdentifier } |
         {delete: false; edit: false; }) => {
-      console.log('The dialog was closed');
-      if (result.delete) {
-        this.delete(result.id);
-        console.log(result.id);
-      } else if (result.edit) {
-        this.saveOne(result.item);
+      if (result) {
+        if (result.delete) {
+          this.delete(result.id);
+          console.log(result.id);
+        } else if (result.edit) {
+          this.saveOne(result.item);
+        }
       }
     });
   }

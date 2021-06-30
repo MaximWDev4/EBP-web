@@ -1,25 +1,13 @@
 export interface IIdentifier {
-  manDate: number;
-  gostNom?: string;
-  position?: number | string;
-  mainStr?: string;
-  crossStr?: string;
-  bracing?: string;
-  skin?: string;
-  performerID?: number;
-  qrCode: string;
-  dzNom?: number;
-  workType?: number | string;
-  condition?: string;
-  select?: string;
-  baseMaterials?: string;
-  mountType?: string;
-  manMethod?: string;
-  config?: string;
-  mods?: string;
-  innom?: string;
-  mantype?: string;
-  standardSize?: string;
-  distance?: string;
-  foundation?: string;
+  id: number;
+  gost_id: number;
+  position: number;
+  street: string;
+  street_dop: string;
+  tiporaz_id: number;
+  tip_kr_id: number;
+  type_pl_id: number;
+  creator: string;
+  qrcode: string;
+  dt_action_created: number;
 }

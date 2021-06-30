@@ -1,0 +1,27 @@
+.record {
+  width: 150%;
+  border-top: solid #212529 thin;
+}
+.record div :not(.head) {
+  margin: auto;
+  text-align: center;
+  line-height: 2rem;
+  padding: 0 0 0 1rem;
+  font-size: 0.8rem;
+}
+.record.head {
+  position: sticky;
+  background: #C4C4C4;
+  z-index: 90;
+}
+.record.head div {
+  line-height: 1rem;
+  font-size: 1rem;
+  margin: auto 0;
+}
+
+.col-0\.3 {
+  width: 3.5%;
+}
+
+/*# sourceMappingURL=edit-roles-item.component.css.map */

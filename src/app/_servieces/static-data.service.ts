@@ -11,4 +11,13 @@ export class StaticDataService{
   getGost(): Observable<any>{
     return this.http.get(UrlService.gost).pipe(map(gosts => gosts));
   }
+  getTiporaz(): Observable<any>{
+    return  this.http.get(UrlService.tiporaz).pipe(map(tiporaz => tiporaz));
+  }
+  getKrepl(): Observable<any>{
+    return this.http.get(UrlService.krepl).pipe(map(krepl => krepl));
+  }
+  getRoles(): Observable<any>{
+    return this.http.get(UrlService.roles).pipe(map(roles => roles));
+  }
 }

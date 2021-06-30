@@ -18,7 +18,7 @@
         <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
           <mat-tab label="Характеристики">
             <ng-template mat-tab-label> Характеристики </ng-template>
-            <app-specifications (formChange)="specChange($event)"></app-specifications>
+            <app-specifications (formChange)="specChange($event)" [data]="data.content"></app-specifications>
           </mat-tab>
           <mat-tab label="Работы" class="actions overflow-hidden">
             <ng-template matTabContent>

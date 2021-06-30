@@ -1,0 +1,8 @@
+<div class="w-100 cont">
+  <app-edit-roles-item  class="border-top " [item]="colNames" [firstRow]="true"></app-edit-roles-item>
+  <div class="border-top no-results text-center p-4" *ngIf="roles.length<1">Ничего не найдено</div>
+  <app-edit-roles-item
+    class="border-top"
+    [item]="role" (editRow)="editRole($event)" *ngFor="let role of roles">
+  </app-edit-roles-item>
+</div>

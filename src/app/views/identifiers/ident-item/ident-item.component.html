@@ -1,29 +1,45 @@
 <div class="record"
      [ngClass]="{'visited': visited, 'deleted': deleted, 'head': firstRow}" *ngIf="!!item && !expand">
-  <div class="gostNom col-0.5 text-left">{{item.gostNom}}</div>
+  <div class="gostNom col-0.5 text-left">{{item.gost_id}}</div>
   <div class="position col-0.5 text-left">{{item.position}}</div>
   <div class="mainStr col-1"
        matTooltipClass="my-tooltip"
-       [matTooltip]="item.mainStr"
+       [matTooltip]="item.street"
        matTooltipShowDelay="500"
-       matTooltipHideDelay="1000">{{item.mainStr}}</div>
+       matTooltipHideDelay="1000">{{item.street}}</div>
   <div class="crossStr col-1"
        matTooltipClass="my-tooltip"
-       [matTooltip]="item.crossStr"
+       [matTooltip]="item.street_dop"
        matTooltipShowDelay="500"
-       matTooltipHideDelay="1000">{{item.crossStr}}</div>
-  <div class="standardSize col-1">{{item.standardSize}}</div>
-  <div class="bracing col-1">{{item.bracing}}</div>
-  <div class="skin col-1">{{item.skin}}</div>
-  <div class="performerID col-1 text-left">{{item.performerID}}</div>
+       matTooltipHideDelay="1000">{{item.street_dop}}</div>
+  <div class="standardSize col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.tiporaz_id"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000">{{item.tiporaz_id}}</div>
+  <div class="bracing col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.tip_kr_id"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000">{{item.tip_kr_id}}</div>
+  <div class="skin col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.type_pl_id"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000">{{item.type_pl_id}}</div>
+  <div class="performerID col-1 text-left"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.creator"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000">{{item.creator}}</div>
   <div class="qrCode col-1"
        matTooltipClass="my-tooltip"
-       [matTooltip]="item.qrCode"
+       [matTooltip]="item.qrcode"
        matTooltipShowDelay="500"
-       matTooltipHideDelay="1000">{{item.qrCode}}</div>
-  <div class="workType col-1 text-left">{{item.workType}}</div>
-  <div class="date col-1.5" *ngIf="!firstRow">{{getDateStr(item.manDate)}}</div>
-  <div class="date col-1.5" *ngIf="firstRow">{{item.manDate}}</div>
+       matTooltipHideDelay="1000">{{item.qrcode}}</div>
+  <div class="workType col-1 text-left">ХЗ</div>
+  <div class="date col-1.5" *ngIf="!firstRow">{{getDateStr(item.dt_action_created)}}</div>
+  <div class="date col-1.5" *ngIf="firstRow">{{item.dt_action_created}}</div>
 
 
   <div class="actions col-1" *ngIf="!firstRow">

@@ -13,8 +13,8 @@ export class GeneralComponent implements OnInit {
 
   constructor() {
     this.form = new FormGroup({
-      mainStr: new FormControl(this.data?.mainStr),
-      crossStr: new FormControl(this.data?.crossStr),
+      mainStr: new FormControl(this.data?.street),
+      crossStr: new FormControl(this.data?.street_dop),
       objectGroup: new FormControl('1'),
       worker: new FormControl('he'),
       checker: new FormControl('he'),

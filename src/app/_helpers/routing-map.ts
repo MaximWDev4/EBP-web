@@ -107,6 +107,18 @@ export const RoutingMap: RoutingMap = {
     absoluteRoute: '/roles',
     child: () => import('../views/roles/roles.module').then(m => m.RolesModule),
     checked: false,
+    subroutes: [
+      {
+        name: 'Редактировать роли',
+        routeName: '/edit',
+        absoluteRoute: '/roles/edit',
+      },
+      {
+        name: 'Администрирование пользователей',
+        routeName: '/users',
+        absoluteRoute: '/roles/users',
+      }
+    ]
   },
   reports: {
     name: 'Отчеты',

@@ -1,4 +1,4 @@
-<div class="row justify-content-around pt-3 m-auto" [formGroup]="form">
+<div class="row justify-content-around pt-3 m-auto" [formGroup]="form" *ngIf="form">
   <mat-form-field class="col-5">
     <mat-label>QR код</mat-label>
     <input matInput  class="qrCode" formControlName="qrCode">
@@ -21,7 +21,7 @@
       *ngIf="input.value.length > 0"
       style="position: absolute; margin-left: -20px"
       color="gray"
-      (click)="input.value = ''; form.controls.condition.setValue('')">
+      (click)="input.value = ''; form.controls.condition.reset(); input.focus()">
     </app-delete>
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" id="c1" class="c1">
       <mat-option value="">Состояние</mat-option>

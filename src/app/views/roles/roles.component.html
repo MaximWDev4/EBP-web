@@ -19,13 +19,13 @@
     <app-add-user></app-add-user>
   </div>
   <div class="row">
-    <app-role-item
+    <app-user-role-item
       class="border-top w-100"
       [query]="query"
       [item]="n"
       (confirmEdit)="displayedRoles[i] = $event"
       *ngFor="let n of displayedRoles; let i = index">
-    </app-role-item>
+    </app-user-role-item>
   </div>
 </div>
 

@@ -2,11 +2,11 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {EventEmitter} from '@angular/core';
 @Component({
-  selector: 'app-role-item',
-  templateUrl: './role-item.component.html',
-  styleUrls: ['./role-item.component.sass']
+  selector: 'app-user-role-item',
+  templateUrl: './user-role-item.component.html',
+  styleUrls: ['./user-role-item.component.sass']
 })
-export class RoleItemComponent implements OnInit {
+export class UserRoleItemComponent implements OnInit {
   @Input() item: any;
   @Input() query?: string;
   @Output() confirmEdit = new EventEmitter();

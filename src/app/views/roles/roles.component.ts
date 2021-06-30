@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {query} from '@angular/animations';
 import {InfoService} from '../../_servieces/info.service';
 
 type Role = {

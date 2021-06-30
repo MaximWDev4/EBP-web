@@ -22,6 +22,7 @@ export class ChangeModalComponent implements OnInit, AfterViewInit{
     private ngZone: NgZone,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<ChangeModalComponent>,
+    private sds: StaticDataService,
     @Inject(MAT_DIALOG_DATA) public data: { title: string, content: IIdentifier }
   ) { }
 
@@ -36,18 +37,20 @@ export class ChangeModalComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit(): void {
+    this.sds.getKrepl().subscribe((api) => console.log(api));
+    this.sds.getTiporaz().subscribe((api) => console.log(api));
     this.form = new FormGroup({
-      gostNom: new FormControl(this.data.content?.gostNom),
+      gostNom: new FormControl(this.data.content?.gost_id),
       position: new FormControl(this.data.content?.position),
-      mainStr: new FormControl(this.data.content?.mainStr),
-      crossStr: new FormControl(this.data.content?.crossStr),
-      standardSize: new FormControl(this.data.content?.standardSize),
-      bracing: new FormControl(this.data.content?.bracing),
-      skin: new FormControl(this.data.content?.skin),
-      performerID: new FormControl(this.data.content?.performerID),
-      qrCode: new FormControl(this.data.content?.qrCode),
-      workType: new FormControl(this.data.content?.workType),
-      date: new FormControl(this.data.content?.manDate),
+      mainStr: new FormControl(this.data.content?.street),
+      crossStr: new FormControl(this.data.content?.street_dop),
+      standardSize: new FormControl(this.data.content?.tiporaz_id),
+      bracing: new FormControl(this.data.content?.tip_kr_id),
+      skin: new FormControl(this.data.content?.type_pl_id),
+      performerID: new FormControl(this.data.content?.creator),
+      qrCode: new FormControl(this.data.content?.qrcode),
+      workType: new FormControl(''),
+      date: new FormControl(this.data.content?.dt_action_created),
       objectGroup: new FormControl('1')
     });
   }
@@ -114,7 +117,7 @@ export class ChangeModalComponent implements OnInit, AfterViewInit{
       { delete: true; edit: false; id: number|string; } |
       {edit: true; delete: false; item: IIdentifier } |
       {delete: false; edit: false; };
-    res = {edit: false, delete: true, id: this.data.content.qrCode};
+    res = {edit: false, delete: true, id: this.data.content.qrcode};
     console.log(res);
     this.dialogRef.close(res);
   }
