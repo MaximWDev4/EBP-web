@@ -19,12 +19,14 @@ import {ChangeModalModule} from './change-modal/change-modal.module';
 import {ImageDNDModule} from './image-component/image.module';
 import {StaticDataService} from '../../_servieces/static-data.service';
 import {DynamicDataService} from '../../_servieces/dynamic-data.service';
+import { IdentColumnsComponent } from './ident-columns/ident-columns.component';
 
 @NgModule({
   declarations: [
     IdentifiersComponent,
     IdentItemComponent,
     IdentFiltersComponent,
+    IdentColumnsComponent,
   ],
   imports: [
     IdentifiersRoutingModule,

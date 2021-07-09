@@ -32,45 +32,51 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   lng = 7.809007;
   private routeSubscription: Subscription | undefined;
   // @ts-ignore
-  private map: L.Map;
+  private map?: L.Map;
   private x = 0;
   private y = 0;
   private zoom = 0;
 
   private initMap(center: LatLng | LatLngLiteral | LatLngTuple | undefined, zoom: number): void {
-    const container = L.DomUtil.get('#map');
-    if (container == null) {
-      this.map = L.map('map', {
-        center,
-        zoom
-      });
+      try {
+        if (!this.map) {
+          const container = L.DomUtil.get('#map');
+          this.map = L.map('map', {
+            center,
+            zoom
+          });
+        }
+      } catch (e) {
+        console.error(e);
+      }
       const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         minZoom: 3,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       });
-
-      tiles.addTo(this.map);
-    }
+      if (this.map) {
+        tiles.addTo(this.map);
+      }
   }
   constructor(private markerService: MarkerService,
               private router: Router,
               private route: ActivatedRoute) {
   }
   ngOnInit(): void {
-    this.routeSubscription = this.route.paramMap.subscribe(params => {
-      // this.currentPage = +this.route.snapshot.paramMap.get('currentPage');
-      const x = this.route.snapshot.paramMap.get('x');
-      const y = this.route.snapshot.paramMap.get('y');
-      const zoom = this.route.snapshot.paramMap.get('zoom');
-      if (this.route.snapshot.paramMap.keys.length !== 0) {
-      }
-      else if (x && y && zoom) {
-        this.x = +x;
-        this.y = +y;
-        this.zoom = +zoom;
-      }
-    });
+
+      this.routeSubscription = this.route.paramMap.subscribe(params => {
+        // this.currentPage = +this.route.snapshot.paramMap.get('currentPage');
+        const x = this.route.snapshot.paramMap.get('x');
+        const y = this.route.snapshot.paramMap.get('y');
+        const zoom = this.route.snapshot.paramMap.get('zoom');
+        if (this.route.snapshot.paramMap.keys.length !== 0) {
+        } else if (x && y && zoom) {
+          this.x = +x;
+          this.y = +y;
+          this.zoom = +zoom;
+        }
+      });
+
   }
 
   ngAfterViewInit(): void {
@@ -79,6 +85,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.map = undefined;
     this.routeSubscription?.unsubscribe();
   }
 }

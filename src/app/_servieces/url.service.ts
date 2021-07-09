@@ -3,6 +3,9 @@ import {environment} from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class UrlService {
+  static get config(): string {
+    return environment.apiUrl + '?config';
+  };
   static get gost(): string {
     return environment.apiUrl + '?gost';
   }
@@ -35,5 +38,8 @@ export class UrlService {
   }
   static get vidr(): string {
     return environment.apiUrl + '?vidr';
+  }
+  static get skin(): string {
+    return environment.apiUrl + '?tip-plnk';
   }
 }

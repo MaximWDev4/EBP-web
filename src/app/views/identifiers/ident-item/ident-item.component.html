@@ -1,6 +1,8 @@
 <div class="record"
-     [ngClass]="{'visited': visited, 'deleted': deleted, 'head': firstRow}" *ngIf="!!item && !expand">
-  <div class="gostNom col-0.5 text-left">{{item.gost_id}}</div>
+     [ngClass]="{'visited': visited, 'deleted': deleted}" *ngIf="!!item && !expand">
+  <div class="gostNom col-0.5 text-left">
+    {{item.gost_id}}
+  </div>
   <div class="position col-0.5 text-left">{{item.position}}</div>
   <div class="mainStr col-1"
        matTooltipClass="my-tooltip"
@@ -38,11 +40,10 @@
        matTooltipShowDelay="500"
        matTooltipHideDelay="1000">{{item.qrcode}}</div>
   <div class="workType col-1 text-left">ХЗ</div>
-  <div class="date col-1.5" *ngIf="!firstRow">{{getDateStr(item.dt_action_created)}}</div>
-  <div class="date col-1.5" *ngIf="firstRow">{{item.dt_action_created}}</div>
+  <div class="date col-1.5">{{getDateStr(item.dt_action_created)}}</div>
 
 
-  <div class="actions col-1" *ngIf="!firstRow">
+  <div class="actions col-1">
     <a class="edit pl-1 pr-1"
        matTooltipClass="my-tooltip"
        matTooltip="Редактировать"
@@ -60,5 +61,4 @@
       <app-map [color]="'blue'"></app-map>
     </a>
   </div>
-  <div class="actions col-1" *ngIf="firstRow"> Действия </div>
 </div>

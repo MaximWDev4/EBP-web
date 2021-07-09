@@ -59,8 +59,8 @@ export const RoutingMap: RoutingMap = {
       },
       {
         name: 'Тип пленки',
-        routeName: 'shell-type',
-        absoluteRoute: '/codifier/shell-type',
+        routeName: 'skin',
+        absoluteRoute: '/codifier/skin',
       },
       {
         name: 'Материал основы',
@@ -69,8 +69,8 @@ export const RoutingMap: RoutingMap = {
       },
       {
         name: 'Способ изготовления',
-        routeName: 'preparation',
-        absoluteRoute: '/codifier/preparation',
+        routeName: 'manufacture',
+        absoluteRoute: '/codifier/manufacture',
       },
       {
         name: 'Тип конфигурации',
@@ -89,8 +89,8 @@ export const RoutingMap: RoutingMap = {
       },
       {
         name: 'Срок действия',
-        routeName: 'expiration',
-        absoluteRoute: '/codifier/expiration',
+        routeName: 'validity',
+        absoluteRoute: '/codifier/validity',
       }
     ]
   },

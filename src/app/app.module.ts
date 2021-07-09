@@ -18,6 +18,10 @@ import {ErrorService} from './_servieces/error.service';
 import {InfoService} from './_servieces/info.service';
 import {SuccessService} from './_servieces/success.service';
 import {ToastModule} from './views/toast/toast.module';
+import {LoginComponent} from './views/login/login.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {YesnoDialogComponent} from './_helpers/yesno.dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,7 @@ import {ToastModule} from './views/toast/toast.module';
     HomeLayoutComponent,
     Page404Component,
     NavItemComponent,
+    LoginComponent,
     SideMenuItemComponent,
   ],
   imports: [
@@ -36,6 +41,8 @@ import {ToastModule} from './views/toast/toast.module';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastModule,
+    ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [
     NgbDateRuParserFormatter,

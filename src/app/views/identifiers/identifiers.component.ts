@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ChangeModalComponent} from './change-modal/change-modal.component';
 import {IIdentifier} from './interfaces/identifiers';
 import {DynamicDataService} from '../../_servieces/dynamic-data.service';
+import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
 
 function formatDateStr(manDate: string): string {
   // console.log(manDate);
@@ -18,6 +19,7 @@ function formatDateStr(manDate: string): string {
 export class IdentifiersComponent implements OnInit {
   public itemsPerPage = 20;
   public p = 0; // current page
+  orderBy = 'gost-nom';
   colNames = {
     id: 'ID',
     gost_id: '№ Госта',
@@ -33,18 +35,32 @@ export class IdentifiersComponent implements OnInit {
   };
   ids: IIdentifier[];
   public drawbleIds: IIdentifier[] = [];
+
   constructor(public dialog: MatDialog, private dds: DynamicDataService) {
     this.ids = [];
     this.drawbleIds = [];
   }
 
   ngOnInit(): void {
+    const filters: {fromDate: number, toDate: number} = {
+      fromDate: new Date(1970, 0, 1).getTime(),
+      toDate: new Date(Date.now()).getTime()};
+    this.getIds(filters);
+  }
+
+  getIds(f: {fromDate: number, toDate: number}): void {
     this.dds.getPassports().subscribe((data: any) => this.ids = data, error => {}, () => {this.drawbleIds = this.ids; });
   }
 
-  filter(f: {fromDate: number, toDate: number}): void {
-    this.drawbleIds = this.ids.filter((id) =>
-      (id.dt_action_created > f.fromDate && id.dt_action_created < f.toDate));
+  sort(params: {s_col: string}): void {
+    this.drawbleIds = this.ids.sort((a, b) => {
+      switch (params.s_col) {
+        case 'gost_id': {
+          return a.gost_id > b.gost_id ? 1 : 0;
+        }
+        default: return 0;
+      }
+    });
   }
 
   get pageCount(): number {

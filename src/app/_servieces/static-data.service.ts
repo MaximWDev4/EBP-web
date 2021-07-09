@@ -20,4 +20,11 @@ export class StaticDataService{
   getRoles(): Observable<any>{
     return this.http.get(UrlService.roles).pipe(map(roles => roles));
   }
+  getSkin(): Observable<any>{
+    return this.http.get(UrlService.skin).pipe(map(skin => skin));
+  }
+
+  getConfig(): Observable<any> {
+    return this.http.get(UrlService.config).pipe(map(skin => skin));
+  }
 }

@@ -1,8 +1,8 @@
-<app-ident-filters [submitted]="false" (Submit)="filter($event)" class=" w-100"></app-ident-filters>
+<app-ident-filters [submitted]="false" (Submit)="getIds($event)" class=" w-100"></app-ident-filters>
 <div class="w-100 wrapper sheet">
 <!--  table-->
   <div class="w-100">
-    <app-ident-item  class="border-top " [item]="colNames" [firstRow]="true"></app-ident-item>
+    <app-ident-columns  class="border-top " [item]="colNames" (changeOrder)="orderBy = $event" [orderedBy]="orderBy"></app-ident-columns>
     <div class="border-top no-results text-center p-4" *ngIf="drawbleIds.length<1">Ничего не найдено</div>
     <app-ident-item
       class="border-top"

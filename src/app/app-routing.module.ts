@@ -3,12 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import {DefaultLayoutComponent} from './containers/default-layout/default-layout.component';
 import {Page404Component} from './views/page404/page404.component';
 import {RoutingMap} from './_helpers/routing-map';
+import {LoginComponent} from './views/login/login.component';
+import {AuthGuard} from './_helpers/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: RoutingMap.home.routeName,
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    pathMatch: 'full',
+    redirectTo: 'login/home'
+  },
+  {
+    path: 'login/:returnUrl',
+    component: LoginComponent
   },
   {
     path: '',
@@ -38,12 +49,13 @@ const routes: Routes = [
         path: RoutingMap.layers.routeName,
         loadChildren: RoutingMap.layers.child,
       },
+
       {
         path: '**',
         component: Page404Component,
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

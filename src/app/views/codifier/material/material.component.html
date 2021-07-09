@@ -1,0 +1,15 @@
+<div class="container wrapper">
+  <div class="row p-3">
+    <input [(ngModel)]="query" (ngModelChange)="queryChange()" type="text" class="col-12 form-control" placeholder="Поиск">
+  </div>
+  <div class="border-bottom mb-3">
+    <p>Материалы основы</p>
+    <div class="line">
+    </div>
+  </div>
+  <div class="row">
+    <app-material-item class="border-top w-100" [query]="query" [item]="n" *ngFor="let n of selectedMaterials">
+    </app-material-item>
+  </div>
+</div>
+

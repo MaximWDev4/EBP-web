@@ -14,8 +14,9 @@ import {IIdentifier} from '../interfaces/identifiers';
 })
 export class IdentItemComponent {
   @Input() item?: IIdentifier | any;
-  @Input() firstRow = false;
   @Output() editRow = new EventEmitter();
+
+
   // @ts-ignore
   form: FormGroup;
   expand = false;
@@ -32,8 +33,12 @@ export class IdentItemComponent {
   }
 
   getDateStr(date: number | string): string {
-    const dateF: Date = new Date(date);
-    const ngbDate: NgbDate = new NgbDate(dateF.getFullYear(), dateF.getMonth(), dateF.getDate());
-    return this.parser.format(ngbDate) + ' ' + dateF.getHours() + ':' + dateF.getMinutes();
+    if (+date !== 0) {
+      const dateF: Date = new Date(+date * 1000);
+      const ngbDate: NgbDate = new NgbDate(dateF.getFullYear(), dateF.getMonth() + 1, dateF.getDate());
+      return this.parser.format(ngbDate) + ' ' + dateF.getHours() + ':' + dateF.getMinutes();
+    } else {
+      return 'нет';
+    }
   }
 }

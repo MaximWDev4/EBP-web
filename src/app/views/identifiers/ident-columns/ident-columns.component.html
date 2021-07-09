@@ -1,0 +1,76 @@
+<div class="record" *ngIf="!!item">
+  <div class="gostNom col-0.5 text-left" (click)="changeOrder.emit('gost_id')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'gost_id'"></app-double-down-arrow>
+    {{item.gost_id}}
+  </div>
+  <div class="position col-0.5 text-left"  (click)="changeOrder.emit('position')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'position'"></app-double-down-arrow>
+    {{item.position}}</div>
+  <div class="mainStr col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.street"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="changeOrder.emit('street')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'street'"></app-double-down-arrow>
+    {{item.street}}</div>
+  <div class="crossStr col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.street_dop"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="changeOrder.emit('street_dop')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'street_dop'"></app-double-down-arrow>
+    {{item.street_dop}}</div>
+  <div class="standardSize col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.tiporaz_id"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="changeOrder.emit('tiporaz_id')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'tiporaz_id'"></app-double-down-arrow>
+    {{item.tiporaz_id}}</div>
+  <div class="bracing col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.tip_kr_id"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="changeOrder.emit('tip_kr_id')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'tip_kr_id'"></app-double-down-arrow>
+    {{item.tip_kr_id}}</div>
+  <div class="skin col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.type_pl_id"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="changeOrder.emit('type_pl_id')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'type_pl_id'"></app-double-down-arrow>
+    {{item.type_pl_id}}</div>
+  <div class="performerID col-1 text-left"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.creator"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="changeOrder.emit('creator')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'creator'"></app-double-down-arrow>
+    {{item.creator}}</div>
+  <div class="qrCode col-1"
+       matTooltipClass="my-tooltip"
+       [matTooltip]="item.qrcode"
+       matTooltipShowDelay="500"
+       matTooltipHideDelay="1000"
+       (click)="changeOrder.emit('qrcode')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'qrcode'"></app-double-down-arrow>
+    {{item.qrcode}}</div>
+  <div class="workType col-1 text-left"
+       (click)="changeOrder.emit('workType')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'workType'"></app-double-down-arrow>
+    ХЗ
+  </div>
+  <div class="date col-1.5"
+       (click)="changeOrder.emit('date')">
+    <app-double-down-arrow style="margin-left: -10px" color="blue" width="10px" height="10px" *ngIf="orderedBy == 'date'"></app-double-down-arrow>
+    {{item.dt_action_created}}</div>
+  <div class="actions col-1"> Действия </div>
+</div>
+
