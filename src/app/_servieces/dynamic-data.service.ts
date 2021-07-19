@@ -11,7 +11,14 @@ export class DynamicDataService {
 
   getPassports(): Observable<any> {
     let params = new HttpParams();
-    params = params.append('passports_get', '');
+    params = params.append('passports-get', '');
+    console.log(params);
+    return this.http.get(environment.apiUrl, { params } ).pipe(map(data => data));
+  }
+  getGosts(type: string): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('gosts-get', '');
+    params = params.append('type', type);
     console.log(params);
     return this.http.get(environment.apiUrl, { params } ).pipe(map(data => data));
   }

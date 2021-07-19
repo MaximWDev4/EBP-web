@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {filter} from 'rxjs/operators';
+import {DynamicDataService} from '../../../_servieces/dynamic-data.service';
 
 @Component({
   selector: 'app-nomenclature',
@@ -7,7 +7,7 @@ import {filter} from 'rxjs/operators';
   styleUrls: ['./nomenclature.component.sass']
 })
 export class NomenclatureComponent implements OnInit {
-  query: string = '';
+  query = '';
   DZ: {name: string}[] = [
     {
       name: '2 - Высокая интенсивность - Лист стальной оцинкованный - Метод аппликации'
@@ -26,11 +26,12 @@ export class NomenclatureComponent implements OnInit {
     }
   ];
   DDZ: {name: string}[];
-  constructor() {
+  constructor(private dds: DynamicDataService) {
     this.DDZ = this.DZ;
   }
 
   ngOnInit(): void {
+    this.dds.getGosts('1').subscribe((data: any) => console.log(data));
   }
 
   queryChange(): void {

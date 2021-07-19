@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {DynamicDataService} from '../../../_servieces/dynamic-data.service';
+import {environment} from '../../../../environments/environment';
 
 type Sign = {
   name: string,
   type: number,
   id: number
-  image?: string
+  icon?: string
 };
 
 type SignType = {
@@ -27,67 +29,43 @@ export class SignTypesComponent implements OnInit {
     },
     {
       id: 2,
-      name: 'Запрещающие'
+      name: 'Приоритета'
     },
     {
       id: 3,
-      name: 'Знаки приоритета'
+      name: 'Запрещающие'
     },
     {
       id: 4,
       name: 'Предписывающие'
+    },
+    {
+      id: 5,
+      name: 'Информационно-указательные'
+    },
+    {
+      id: 6,
+      name: 'Сервиса'
+    },
+    {
+      id: 7,
+      name: 'Дополнительной информации'
     }
   ];
   selectedSigns: Sign[] = [];
-  constructor() { }
+  baseurl = environment.apiUrl;
+  constructor(private dds: DynamicDataService) { }
 
   ngOnInit(): void {
-    this.signs = [
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 1,
-        id: 1,
-      },
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 1,
-        id: 1,
-      },
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 1,
-        id: 1,
-      },
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 1,
-        id: 1,
-      },
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 2,
-        id: 1,
-      },
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 1,
-        id: 1,
-      },
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 2,
-        id: 1,
-      },
-      {
-        name: '1.1 Железнодорожный переезд со шлагбаумом',
-        type: 2,
-        id: 1,
-      },
-    ];
-    this.setSelectedSigns(1);
+    this.signs = [];
+    this.setSelectedSigns('1');
   }
 
-  setSelectedSigns(typeId: number): void {
-    this.selectedSigns = this.signs.filter(value => value.type === typeId);
+  setSelectedSigns(typeId: string): void {
+    this.dds.getGosts(typeId).subscribe((data: any) => {
+      console.log(data);
+      this.signs = data;
+      this.selectedSigns = this.signs.filter(value => value.type === +typeId);
+    });
   }
 }

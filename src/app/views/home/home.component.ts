@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as L from 'leaflet';
 
 import {MarkerService} from '../../_servieces/marker.service';
@@ -30,7 +30,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'My first AGM project';
   lat = 51.678418;
   lng = 7.809007;
+  mapDiv?: ElementRef;
   private routeSubscription: Subscription | undefined;
+  @ViewChild('map') set content(content: ElementRef) {
+    if (content) { // initially setter gets called with undefined
+      this.mapDiv = content;
+    }
+  }
   // @ts-ignore
   private map?: L.Map;
   private x = 0;
@@ -40,7 +46,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private initMap(center: LatLng | LatLngLiteral | LatLngTuple | undefined, zoom: number): void {
       try {
         if (!this.map) {
-          const container = L.DomUtil.get('#map');
+          // const container = L.DomUtil.get('#map');
           this.map = L.map('map', {
             center,
             zoom
@@ -63,29 +69,27 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
               private route: ActivatedRoute) {
   }
   ngOnInit(): void {
-
-      this.routeSubscription = this.route.paramMap.subscribe(params => {
-        // this.currentPage = +this.route.snapshot.paramMap.get('currentPage');
-        const x = this.route.snapshot.paramMap.get('x');
-        const y = this.route.snapshot.paramMap.get('y');
-        const zoom = this.route.snapshot.paramMap.get('zoom');
-        if (this.route.snapshot.paramMap.keys.length !== 0) {
-        } else if (x && y && zoom) {
-          this.x = +x;
-          this.y = +y;
-          this.zoom = +zoom;
-        }
-      });
-
+    this.routeSubscription = this.route.paramMap.subscribe(params => {
+      // this.currentPage = +this.route.snapshot.paramMap.get('currentPage');
+      const x = this.route.snapshot.paramMap.get('x');
+      const y = this.route.snapshot.paramMap.get('y');
+      const zoom = this.route.snapshot.paramMap.get('zoom');
+      if (this.route.snapshot.paramMap.keys.length !== 0) {
+      } else if (x && y && zoom) {
+        this.x = +x;
+        this.y = +y;
+        this.zoom = +zoom;
+      }
+    });
   }
 
   ngAfterViewInit(): void {
-    this.initMap([this.x, this.y], this.zoom);
+    this.map?.remove();
+    this.initMap([this.y, this.y], this.zoom);
     this.markerService.makeSignMarkers(this.map, this.router);
   }
 
   ngOnDestroy(): void {
-    this.map = undefined;
     this.routeSubscription?.unsubscribe();
   }
 }

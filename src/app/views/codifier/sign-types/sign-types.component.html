@@ -14,9 +14,9 @@
   </div>
   <div class="row grid">
     <div class="cell col-3 mb-3" *ngFor="let sign of selectedSigns">
-      <div class="grid-img no-img" *ngIf="!sign.image"></div>
-      <img class="grid-img" [src]="sign.image" alt="Нет изображения"  *ngIf="sign.image">
-      {{sign.name}}
+      <div class="grid-img no-img" *ngIf="!sign.icon"></div>
+      <div class="grid-img" [style]="{'background-image': 'url(' + baseurl + sign.icon + ')'}" *ngIf="sign.icon"></div>
+      <p>{{sign.name}}</p>
     </div>
   </div>
 </div>

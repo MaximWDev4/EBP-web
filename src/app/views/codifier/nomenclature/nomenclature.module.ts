@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {NomenItemComponent} from './nomen-item/nomen-item.component';
 import {SvgModule} from '../../../svg/svg.module';
 import {FormsModule} from '@angular/forms';
+import {DynamicDataService} from '../../../_servieces/dynamic-data.service';
 
 @NgModule({
   declarations: [
@@ -17,5 +18,6 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     FormsModule,
   ],
+  providers: [DynamicDataService]
 })
 export class NomenclatureModule { }
